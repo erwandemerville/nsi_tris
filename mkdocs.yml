@@ -1,4 +1,4 @@
-site_name: NSI Première - Tris
+site_name: NSI première - Algos de tri
 theme:
   name: material
   features:
@@ -7,6 +7,7 @@ site_url: https://erwandemerville.github.io/nsi_tris/
 nav:
   - Cours:
     - Activité préliminaire: activite_preliminaire.md
+    - Tri par sélection: tri_selection.md
 
 markdown_extensions:
   - pymdownx.arithmatex:
