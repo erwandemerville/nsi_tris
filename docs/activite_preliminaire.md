@@ -25,8 +25,8 @@ La zone de jeu est constituée :
     Par groupes de **2 à 3** personnes, vous devez :
 
     - Disposer une suite de **8 cartes** arbitrairement choisies sur votre table.
-    - Établir, à l'écrit, une **suite d'instructions** « en français » permettant de trier ces cartes dans l'ordre croissant. Votre stratégie doit pouvoir être reproduite sur **n'importe quelle suite de cartes**.<br />Vous l'écrirez sur [https://collab.infoforall.fr/](https://collab.infoforall.fr/){ target="_blank" }.
-    - Tester votre stratégie sur différentes suites de cartes et vous assurer qu'il fonctionne toujours.
+    - Établir, à l'écrit, une **suite d'instructions** « en français » permettant de trier ces cartes dans l'ordre croissant. Votre stratégie doit pouvoir être reproduite sur **n'importe quelle suite de cartes**.<br />Vous l'écrirez sur un bloc-note [https://collab.infoforall.fr/](https://collab.infoforall.fr/){ target="_blank" }.
+    - Tester votre stratégie sur différentes suites de cartes et vous assurer qu'elle fonctionne toujours.
 
 !!! warning "Important"
     Les **seules opérations élémentaires autorisées** sont les suivantes :
