@@ -1,10 +1,13 @@
 # Tri par sélection et par insertion
 
-Bienvenue, ce site se décompose en plusieurs parties :
+Bienvenue, ce site est dédié au cours de **première NSI** sur le **tri par sélection** et **par insertion**.
 
 - **COURS** :
-    - [Activité préliminaire sur les tris](activite_preliminaire.md)
     - [Cours tri par sélection](tri_selection.md)
     - Cours tri par insertion (à venir)
-- **PYTHON** :
-    - Implémentation tri par insertion (à venir)
+
+---
+
+*Demerville Erwan*
+
+Me contacter : <demerville.erwan@gmail.com>

@@ -6,10 +6,10 @@
 :Exemples:
 
 >>> l = [9, 1, 7, 3, 5, 2, 6]
->>> est_triee(l) == False
-True
+>>> est_triee(l)
+False
 >>> tri_selection(l)
->>> est_triee(l) == True
+>>> est_triee(l)
 True
 '''
 
