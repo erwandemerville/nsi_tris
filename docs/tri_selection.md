@@ -49,15 +49,12 @@ Le but est de trier les barres de la **plus petite** à **la plus grande**.
 
 ## L'algorithme
 
-L'algorithme du **tri par sélection** peut être écrit de plusieurs manières différentes :
-
-- en **itératif** ou en **récursif**,
-- **en place** ou non.
+L'algorithme du **tri par sélection** peut être implémenté **en place** ou non.
 
 !!! info "Tri en place"
     Un tri est dit *en place* s'il modifie directement la structure qu’il est en train de trier, plutôt que de créer et de renvoyer une nouvelle structure.
 
-L'algorithme présenté ici sera écrit de manière **itérative** et **en place**.  
+Ici, on ne renverra pas de nouveau tableau, on modifiera directement le tableau donné en entrée.  
 Le tri s'effectuera par sélection **du minimum**.
 
 Pour simplifier les choses, on commence par séparer l'algorithme de tri en **3 sous-algorithmes** :
