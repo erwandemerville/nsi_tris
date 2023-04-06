@@ -1,7 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from random import randint
+
 ''' Implémentation du tri par sélection du minimum. 
+Les exemples ci-dessous sont automatiquement exécutés par le module doctest lors de
+l'exécution de ce programme. S'il ne se passe rien, cela signifie que les tests fonctionnent.
 
 :Exemples:
 
@@ -11,57 +15,61 @@ False
 >>> tri_selection(l)
 >>> est_triee(l)
 True
+>>> l = [randint(0, 100) for _ in range(20)]
+>>> tri_selection(l)
+>>> est_triee(l)
+True
 '''
 
 # ==> QUESTION 1 <==
 
-def minimum(liste, debut):
-    ''' Renvoie l'indice de la valeur minimale de la liste dans l'intervalle [debut, len(liste) - 1].
-    :param liste: (list[int]) Une liste d'entiers
-    :param debut: (int) L'indice à partir duquel on recherche le minimum
-    :return: (int) L'indice du minimum '''
+def minimum(tableau, debut):
+    ''' Renvoie l'indice de la valeur minimale du tableau dans l'intervalle [debut, len(tableau) - 1].
+    :param tableau: (list[int]) un tableau d'entiers
+    :param debut: (int) l'indice à partir duquel on recherche le minimum
+    :return: (int) l'indice du minimum '''
 
     pass
 
-def echanger(liste: list[int], i: int, j: int) -> None:
-    ''' Echanger deux éléments d'une liste
-    :param liste: (list[int]) Une liste d'entiers
-    :param i: (int) L'indice d'un élément de la liste
-    :param j: (int) L'indice d'un élément de la liste '''
+def echanger(tableau: list[int], i: int, j: int) -> None:
+    ''' Echanger deux éléments d'un tableau
+    :param tableau: (list[int]) un tableau d'entiers
+    :param i: (int) l'indice d'un élément du tableau
+    :param j: (int) l'indice d'un élément du tableau '''
 
     pass
 
-def tri_selection(liste: list[int]) -> None:
-    ''' Effectue le tri par sélection en place des éléments d'une liste donnée.
-    :param liste: (list[int]) Une liste d'entiers à trier '''
+def tri_selection(tableau: list[int]) -> None:
+    ''' Effectue le tri par sélection en place des éléments d'un tableau donné.
+    :param tableau: (list[int]) un tableau d'entiers à trier '''
 
     pass
 
 # ==> QUESTION 2 <==
 
-def tri_selection_tout_en_un(liste: list[int]) -> None:
-    ''' Effectue le tri par sélection en place des éléments d'une liste donnée.
+def tri_selection_tout_en_un(tableau: list[int]) -> None:
+    ''' Effectue le tri par sélection en place des éléments d'un tableau donné.
     
-    :param liste: (list[int]) Une liste d'entiers à trier '''
+    :param tableau: (list[int]) un tableau d'entiers à trier '''
 
     pass
 
 # ==> QUESTION 3 <==
 
-def tri_selection_decroissant(liste: list[int]) -> None:
-    ''' Effectue le tri par sélection dans l'ordre décroissant des éléments d'une liste donnée.
-    :param liste: (list[int]) Une liste d'entiers à trier '''
+def tri_selection_decroissant(tableau: list[int]) -> None:
+    ''' Effectue le tri par sélection dans l'ordre décroissant des éléments d'un tableau donné.
+    :param tableau: (list[int]) un tableau d'entiers à trier '''
 
     pass
 
 # Fonctions utiles (pas à modifier)
 
-def est_triee(liste: list[int]) -> bool:
-    ''' Renvoie True si la liste donnée est triée, False sinon. 
-    :param liste: (list[int]) Liste d'entiers à vérifier 
-    :return: (bool) True ou False selon si la liste est triée ou non. '''
+def est_triee(tableau: list[int]) -> bool:
+    ''' Renvoie True si le tableau donné est triée, False sinon. 
+    :param tableau: (list[int]) tableau d'entiers à vérifier 
+    :return: (bool) True ou False selon si le tableau est triée ou non. '''
 
-    return all(liste[i - 1] <= liste[i] for i in range(1, len(liste)))
+    return all(tableau[i - 1] <= tableau[i] for i in range(1, len(tableau)))
 
 if __name__ == '__main__':
     ''' Instructions exécutées si l'on exécute ce fichier directement '''

@@ -294,8 +294,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#complexite-du-tri-par-selection" class="md-nav__link">
-    Complexité du tri par sélection
+  <a href="#cout-du-tri-par-selection" class="md-nav__link">
+    Coût du tri par sélection
   </a>
   
 </li>
@@ -399,8 +399,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#complexite-du-tri-par-selection" class="md-nav__link">
-    Complexité du tri par sélection
+  <a href="#cout-du-tri-par-selection" class="md-nav__link">
+    Coût du tri par sélection
   </a>
   
 </li>
@@ -453,7 +453,7 @@ Voici l'<strong>ordre</strong> des valeurs des cartes, de la <strong>moins forte
 <ol>
 <li>Chercher l'<strong>indice</strong> de la <strong>plus faible carte</strong> de la suite (à partir de l'indice <strong>0</strong>) et <strong>échanger</strong> cette carte avec celle qui est placée en <strong>premier</strong>. La première carte est maintenant <strong>la plus faible</strong>.</li>
 <li>Chercher l'<strong>indice</strong> de la <strong>plus faible carte</strong> de la suite en partant du <strong>2ème élément</strong> (indice <strong>1</strong>) et <strong>échanger</strong> cette carte avec celle qui est placée en <strong>deuxième</strong>. Les <strong>deux premières cartes</strong> sont les plus faibles et sont maintenant <strong>triées</strong>.</li>
-<li>Poursuivre ainsi jusqu’à l’<strong>avant dernière carte</strong> de la liste.</li>
+<li>Poursuivre ainsi jusqu’à l’<strong>avant dernière carte</strong> de la suite.</li>
 </ol>
 </div>
 <figure>
@@ -475,16 +475,12 @@ Le but est de trier les barres de la <strong>plus petite</strong> à <strong>la 
 <div id="bars-container"></div></p>
 </div>
 <h2 id="lalgorithme">L'algorithme</h2>
-<p>L'algorithme du <strong>tri par sélection</strong> peut être écrit de plusieurs manières différentes :</p>
-<ul>
-<li>en <strong>itératif</strong> ou en <strong>récursif</strong>,</li>
-<li><strong>en place</strong> ou non.</li>
-</ul>
+<p>L'algorithme du <strong>tri par sélection</strong> peut être implémenté <strong>en place</strong> ou non.</p>
 <div class="admonition info">
 <p class="admonition-title">Tri en place</p>
 <p>Un tri est dit <em>en place</em> s'il modifie directement la structure qu’il est en train de trier, plutôt que de créer et de renvoyer une nouvelle structure.</p>
 </div>
-<p>L'algorithme présenté ici sera écrit de manière <strong>itérative</strong> et <strong>en place</strong>.<br />
+<p>Ici, on ne renverra pas de nouveau tableau, on modifiera directement le tableau donné en entrée.<br />
 Le tri s'effectuera par sélection <strong>du minimum</strong>.</p>
 <p>Pour simplifier les choses, on commence par séparer l'algorithme de tri en <strong>3 sous-algorithmes</strong> :</p>
 <ul>
@@ -573,6 +569,7 @@ Le tri s'effectuera par sélection <strong>du minimum</strong>.</p>
 <p class="admonition-title">Stabilité du tri</p>
 <p>Un <strong>tri</strong> est dit <strong>stable</strong> s'il préserve l’<strong>ordonnancement initial des éléments</strong> que l'ordre considère comme égaux.<br />
 Le tri par sélection est, dans le cas de notre algorithme, <strong>instable</strong> car en cas de valeurs identiques dans le tableau initial, leur ordre relatif peut être modifié.</p>
+<p><em>Exemple</em> : Avec le tableau <code>[2, 4a, 4b, 3, 7, 5]</code>, l'ordre des éléments de valeur <code>4</code> n'est pas conservé.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Sélection du maximum</p>
@@ -583,11 +580,17 @@ Le tri par sélection est, dans le cas de notre algorithme, <strong>instable</st
 <p><strong>Question 1</strong> : Déroulez le <strong>tri par sélection</strong> du minimum sur le tableau <code>[7, 1, 5, 3, 8, 5]</code> en vous aidant du tableau suivant :</p>
 <p><img alt="Tableau exo tri sélection" src="../images/tableau_exo_triselect.png" /></p>
 <p><strong>Question 2</strong> : Faites de même sur le tableau <code>[5, 3, 1, 4, 6, 2]</code>.</p>
+<p><strong>Question 3</strong> : Même chose cette fois avec le tableau <code>['b', 'e', 'c', 'w', 'p', 'q']</code>. On utilisera l'ordre <strong>lexicographique</strong>.</p>
 </div>
 <h2 id="implementation-du-tri-par-selection">Implémentation du tri par sélection</h2>
 <p>On va maintenant implémenter l'algorithme du <strong>tri par sélection</strong> en <strong>Python</strong>.<br />
-Les <strong>tableaux</strong> seront représentés par des <strong>listes Python</strong>. (On parlera donc ici de listes plutôt que de tableaux.)</p>
-<p><em>Note</em> : Pour simplifier, on parlera de <em>listes triées</em> pour parler de <em>listes triées dans l'ordre croissant</em>.</p>
+Les <strong>tableaux</strong> seront représentés par des <strong>listes Python</strong> (objets de type <code>list</code>).</p>
+<div class="admonition note">
+<p class="admonition-title">Question préliminaire</p>
+<p>Les <strong>listes Python</strong> sont-elles des structures de données <strong>mutables</strong> ou non ?
+Citer 2 structures <strong>mutables</strong> et deux structures <strong>non-mutables</strong> en Python.</p>
+</div>
+<p><em>Note</em> : Pour simplifier, on parlera de <em>tableaux triés</em> pour parler de <em>tableaux triés dans l'ordre croissant</em>.</p>
 <div class="admonition success">
 <p class="admonition-title">À télécharger</p>
 <p>Récupérer le fichier <a href="../src/tri_selection.py">tri_selection.py</a> à compléter.</p>
@@ -596,41 +599,158 @@ Les <strong>tableaux</strong> seront représentés par des <strong>listes Python
 <p class="admonition-title">Question 1</p>
 <ol>
 <li>Compléter les fonctions : <ul>
-<li><code>minimum(liste, debut)</code> : renvoie l'<strong>indice</strong> de l'élément de <strong>valeur minimale</strong> dans l'intervalle <code>[debut, len(liste) - 1]</code>.</li>
-<li><code>echanger(liste, i, j)</code> : échange les éléments d'indices <code>i</code> et <code>j</code> de la liste <code>liste</code>.</li>
+<li><code>minimum(tableau, debut)</code> : renvoie l'<strong>indice</strong> de l'élément de <strong>valeur minimale</strong> dans l'intervalle <code>[debut, len(tableau) - 1]</code>.</li>
+<li><code>echanger(tableau, i, j)</code> : échange les éléments d'indices <code>i</code> et <code>j</code> du tableau <code>tableau</code>.</li>
 </ul>
 </li>
-<li>Compléter la fonction <code>tri_selection(liste)</code> qui effectue le <strong>tri par sélection</strong> d'une liste <code>liste</code> donnée, en réutilisant les deux fonctions précédentes.</li>
+<li>Compléter la fonction <code>tri_selection(tableau)</code> qui effectue le <strong>tri par sélection</strong> des éléments d'un tableau <code>tableau</code> donné, en réutilisant les deux fonctions précédentes.</li>
+<li>Est-il nécessaire de mettre un <code>return None</code> ? Pourquoi ?</li>
+<li>Peut-on dire que la fonction <code>tri_selection</code> est une <strong>procédure</strong> ? Pourquoi ?</li>
 </ol>
-<p>Le programme est muni de <strong>tests</strong> (lignes <code>8</code> à <code>13</code>).<br />
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tester ma fonction</p>
+<p>Le programme est muni de <strong>tests</strong> (lignes <code>12</code> à <code>21</code>) exécutés par le module <em>Doctest</em>.<br />
 Vous pouvez donc <strong>tester vos fonctions</strong> en exécutant simplement le programme. Si rien ne se passe, c'est que tout est bon. Sinon, l'interpréteur indiquera les tests qui ont échoué.</p>
+<p>(Vous pouvez rajouter d'autres tests ou effectuer des tests sur l'interpréteur si vous le souhaitez.)</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Question 2</p>
-<p>Compléter la fonction <code>tri_selection_tout_en_un(liste)</code> en ré-écrivant le <strong>tri par sélection</strong> sans appeler d'autres fonctions (les <strong>recherches du minimum</strong> et les <strong>échanges</strong> sont effectués <strong>directement dans cette fonction</strong>).</p>
+<p>Compléter la fonction <code>tri_selection_tout_en_un(tableau)</code> en ré-écrivant le <strong>tri par sélection</strong> sans appeler d'autres fonctions (les <strong>recherches du minimum</strong> et les <strong>échanges</strong> sont effectués <strong>directement dans cette fonction</strong>).</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Question 3</p>
-<p>Écrire la fonction <code>tri_selection_decroissant(liste)</code> qui effectue le <strong>tri par sélection</strong> des éléments d'une liste dans l'<strong>ordre décroissant</strong>.</p>
+<p>Écrire la fonction <code>tri_selection_decroissant(tableau)</code> qui effectue le <strong>tri par sélection</strong> des éléments d'un tableau dans l'<strong>ordre décroissant</strong>.</p>
 </div>
-<h2 id="complexite-du-tri-par-selection">Complexité du tri par sélection</h2>
-<details class="tip">
-<summary>Calcul de la complexité du tri par sélection</summary>
-<div class="arithmatex">\[
-C(n) = 1 + 2 + [...] + (n - 2) + (n - 1) = \frac{(n - 1)n}{2}
-\]</div>
-<div class="arithmatex">\[
-C(n) = \sum_{x=1}^{n-1}x = \frac{(n - 1)n}{2}
-\]</div>
-</details>
+<div class="admonition note">
+<p class="admonition-title">Question 4</p>
+<p>Dans les <strong>tests</strong>, à la ligne <code>18</code>, on trouve l'instruction <code>l = [randint(0, 100) for _ in range(20)]</code>.<br />
+Que fait cette instruction ? Quel est le nom de la <strong>méthode</strong> de <strong>création de liste</strong> utilisée ?</p>
+</div>
+<h2 id="cout-du-tri-par-selection">Coût du tri par sélection</h2>
+<p>Voyons à présent quel est le <strong>coût</strong> du <strong>tri par sélection</strong>.<br />
+On rappelle l'algorithme du <strong>tri par sélection</strong> et de <strong>recherche du minimum</strong> :</p>
+<div class="admonition abstract">
+<p class="admonition-title">Algorithme du tri par sélection</p>
+<p><strong>ALGORITHME</strong> : tri_selection<br />
+<strong>ENTRÉES</strong> :<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<code>tableau</code> : un <strong>tableau</strong> d'éléments pouvant être <strong>comparés</strong><br />
+<strong>SORTIE</strong> : aucune (tri <em>en place</em>)</p>
+<p><strong>DÉBUT</strong><br />
+&emsp;&emsp;n ← longueur(tableau)<br />
+&emsp;&emsp;<strong>POUR</strong> debut <strong>ALLANT DE</strong> 0 <strong>À</strong> n - 2<br />
+&emsp;&emsp;&emsp;&emsp;indice_min ← minimum(tableau, debut)<br />
+&emsp;&emsp;&emsp;&emsp;<strong>SI</strong> indice_min <strong>≠</strong> debut, <strong>ALORS</strong><br />
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;echanger(tableau, debut, indice_min)<br />
+&emsp;&emsp;<strong>FIN POUR</strong> <br />
+&emsp;&emsp;Renvoyer <strong>∅</strong><br />
+<strong>FIN ALGORITHME</strong></p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Algorithme de recherche du minimum</p>
+<p><strong>ALGORITHME</strong> : minimum<br />
+<strong>ENTRÉES</strong> :<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<code>tableau</code> : un <strong>tableau</strong> d'éléments<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<code>debut</code> : l'<strong>indice</strong> à partir duquel effectuer la recherche<br />
+<strong>SORTIE</strong> : l'<strong>indice</strong> de l'élément minimal dans l'intervalle <code>[debut, longueur(tableau) - 1]</code> du tableau</p>
+<p><strong>DÉBUT</strong><br />
+&emsp;&emsp;indice_min ← debut<br />
+&emsp;&emsp;<strong>POUR</strong> i <strong>ALLANT DE</strong> debut + 1 <strong>À</strong> longueur(tableau) - 1<br />
+&emsp;&emsp;&emsp;<strong>SI</strong> tableau[i] &lt; tableau[indice_min], <strong>ALORS</strong><br />
+&emsp;&emsp;&emsp;&emsp;indice_min ← i<br />
+&emsp;&emsp;<strong>FIN POUR</strong><br />
+&emsp;&emsp;Renvoyer indice_min<br />
+<strong>FIN ALGORITHME</strong></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Question 1</p>
+<p>On souhaite calculer le <strong>nombre de comparaisons</strong> effectué pour <strong>trier</strong> la liste <code>[3, 7, 1, 6, 5, 2]</code>.</p>
+<p><strong>Compléter</strong> le tableau suivant en indiquant le <strong>nombre de comparaisons</strong> effectué après chaque <strong>itération</strong> de la <strong>boucle principale</strong> <code>POUR debut ALLANT DE 0 À n - 2</code>, c'est-à-dire le nombre de comparaisons effectué par l'algorithme <code>minimum(tableau, debut)</code> pour chaque valeur de <code>debut</code> de <code>0</code> à <code>n</code>, <code>n</code> étant la <strong>longueur du tableau</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>itération k =</th>
+<th><code>debut</code></th>
+<th>tableau après itération k</th>
+<th>nombre de comparaisons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>[1, <strong>7, 3, 6, 5, 2</strong>]</td>
+<td>...</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1</td>
+<td>[3, 2, <strong>1, 6, 5, 7</strong>]</td>
+<td>...</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2</td>
+<td>[3, 7, 1, <strong>6, 5, 2</strong>]</td>
+<td>...</td>
+</tr>
+<tr>
+<td>4</td>
+<td>3</td>
+<td>[3, 7, 1, 2, <strong>5, 6</strong>]</td>
+<td>...</td>
+</tr>
+<tr>
+<td>5</td>
+<td>4</td>
+<td>[3, 7, 1, 6, 5, <strong>6</strong>]</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p>Calculer le nombre de comparaisons <strong>au total</strong>, noté <span class="arithmatex">\(C(6)\)</span>, effectué pour trier ce tableau.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Question 2</p>
+<p>Si l'on change les valeurs du tableau de la question précédente, le <strong>nombre de comparaisons</strong> change t-il ? Pourquoi ?</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Question 3</p>
+<p>Calculer le <strong>nombre de comparaisons</strong>, noté <span class="arithmatex">\(C(n)\)</span>, pour un tableau de taille <span class="arithmatex">\(n\)</span>.<br />
+Finalement, quelle est la <strong>complexité</strong> du <strong>tri par sélection</strong> ? (Voir l'aide ci-dessous si nécessaire.)</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Rappel sur les complexités</p>
+<p>Voici un rappel sur les différentes complexités :</p>
+<ul>
+<li>Logarithmique <span class="arithmatex">\(Θ(log~n)\)</span> : la complexité évolue <strong>moins vite</strong> que le nombre <strong>n</strong> de données (par exemple : si on multiplie le nombre de données <strong>n</strong> par <strong>2</strong>, on ne rajoute qu'<strong>une seule</strong> opération).</li>
+<li>Linéaire <span class="arithmatex">\(Θ(n)\)</span> : la complexité évolue <strong>comme</strong> le nombre <strong>n</strong> de données (par exemple : si on multiplie le nombre de données <strong>n</strong> par <strong>2</strong>, le temps d'exécution est multiplié par <strong>2</strong>).</li>
+<li>Quasi-linéaire <span class="arithmatex">\(O(n~log~n)\)</span> : Intermédiaire entre linéaire et quadratique. En pratique, un algorithme de complexité quasi-linéaire a un comportement très proche d’un algorithme de complexité linéaire.</li>
+<li>Quadratique <span class="arithmatex">\(Θ(n^2)\)</span> : la complexité évolue <strong>comme le carré</strong> du nombre <strong>n</strong> de données (par exemple : si on multiplie le nombres de données <strong>n</strong> par <strong>2</strong>, le temps d'exécution est multiplié par <strong>4</strong>).</li>
+<li>Exponentielle <span class="arithmatex">\(Θ(2^n)\)</span> : la complexité évolue à terme <strong>beaucoup plus vite</strong> que n'importe quelle fonction polynomiale du nombre <strong>n</strong> de données (par exemple : si on multiplie le nombre de données <strong>n</strong> par <strong>100</strong>, le temps d'exécution est multiplié par <span class="arithmatex">\(2^{100}\)</span>, soit <strong>1267650600228229401496703205376</strong>).</li>
+</ul>
+<p><figure markdown>
+<center>
+<img alt="Graphe des complexités" src="../images/complexites.jpeg" width="80%" />
+<figcaption>Source : <a href="https://buzut.net/cours/computer-science/time-complexity">https://buzut.net/cours/computer-science/time-complexity</a></figcaption>
+</center>
+</figure></p>
+</div>
 <div class="admonition success">
 <p class="admonition-title">À télécharger</p>
-<p>Récupérer le fichier <a href="../src/analyse_tri_selection.py">analyse_tri_selection.py</a> à compléter.</p>
+<p>Récupérer le fichier <a href="../src/analyse_tri_selection.py">analyse_tri_selection.py</a>.</p>
+<p>Ce fichier permet de <strong>compter le nombre de comparaisons</strong> effectué par le <strong>tri par sélection</strong>, en utilisant une <strong>variable globale</strong> <code>CNT</code> incrémentée à chaque comparaison de deux éléments effectuée.</p>
+<p>Vous pouvez modifier l'instruction à la ligne <code>38</code> en changeant le tableau pour lequel vous souhaitez compter le nombre de comparaisons.</p>
 </div>
 <h2 id="terminaison-du-tri-par-selection">Terminaison du tri par sélection</h2>
-<p>...</p>
+<div class="admonition tip">
+<p class="admonition-title">Variant de boucle</p>
+<p>Un <strong>variant de boucle</strong> est un <strong>entier naturel</strong> qui <strong>décroit strictement</strong> à chaque tour de boucle.<br />
+On exhibe un <strong>variant de boucle</strong> pour démontrer qu'une boucle <strong>se termine</strong>, en un temps fini.</p>
+</div>
+<p>à suivre...</p>
 <h2 id="preuve-de-correction-du-tri-par-selection">Preuve de correction du tri par sélection</h2>
-<p>...</p>
+<p>à venir...</p>
 
 
 
