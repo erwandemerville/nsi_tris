@@ -23,7 +23,7 @@ True
 
 # ==> QUESTION 1 <==
 
-def minimum(tableau, debut):
+def minimum(tableau: list[int], debut: int) -> int:
     ''' Renvoie l'indice de la valeur minimale du tableau dans l'intervalle [debut, len(tableau) - 1].
     :param tableau: (list[int]) un tableau d'entiers
     :param debut: (int) l'indice à partir duquel on recherche le minimum
