@@ -176,7 +176,7 @@ Les **tableaux** seront représentés par des **listes Python** (objets de type 
     4. Peut-on dire que la fonction `tri_selection` est une **procédure** ? Pourquoi ?
 
 !!! tip "Tester ma fonction"
-    Le programme est muni de **tests** (lignes `12` à `21`) exécutés par le module *Doctest*.  
+    Le programme est muni de **tests** (lignes `13` à `22`) exécutés par le module *Doctest*.  
     Vous pouvez donc **tester vos fonctions** en exécutant simplement le programme. Si rien ne se passe, c'est que tout est bon. Sinon, l'interpréteur indiquera les tests qui ont échoué.
 
     (Vous pouvez rajouter d'autres tests ou effectuer des tests sur l'interpréteur si vous le souhaitez.)
@@ -188,7 +188,7 @@ Les **tableaux** seront représentés par des **listes Python** (objets de type 
     Écrire la fonction `tri_selection_decroissant(tableau)` qui effectue le **tri par sélection** des éléments d'un tableau dans l'**ordre décroissant**.
 
 !!! note "Question 4"
-    Dans les **tests**, à la ligne `18`, on trouve l'instruction `l = [randint(0, 100) for _ in range(20)]`.  
+    Dans les **tests**, à la ligne `19`, on trouve l'instruction `l = [randint(0, 100) for _ in range(20)]`.  
     Que fait cette instruction ? Quel est le nom de la **méthode** de **création de liste** utilisée ?
 
 ## Coût du tri par sélection
@@ -285,8 +285,8 @@ On rappelle l'algorithme du **tri par sélection** et de **recherche du minimum*
 
     <figure markdown>
     <center>
-    ![Graphe des complexités](images/complexites.jpeg){ width="80%" }
-    <figcaption>Source : <https://buzut.net/cours/computer-science/time-complexity></figcaption>
+    ![Graphe des complexités algorithmiques](images/graphique_complexites.png)
+    <figcaption>Courbes d'évolution des différentes complexités algorithmiques.<br />(généré avec [ce programme](src/graphique_complexites.py){ target="_blank" })</figcaption>
     </center>
     </figure>
 
@@ -441,7 +441,7 @@ Une fois qu'une propriété a été déterminée, il faut la **démontrer** en u
     
     - **Initialisation** : on vérifie que la proposition est **vraie** au **rang initial** $0$, c'est-à-dire **avant le premier passage** dans la **boucle**.
     - **Conservation** : on suppose que la proposition est **vraie à un certain rang** $k \ge 0$ fixé, c'est-à-dire **après** $k$ **tours de boucle**, et on en déduit qu'elle est **vraie** au **rang suivant** $k + 1$, c'est-à-dire après **un tour de boucle en plus**. On peut écrire $P_k \implies P_{k+1}$.
-    - **Terminaison** : « par récurrence, la proposition est vraie pour tout entier $k \ge 0$. »
+    - **Terminaison** : on exploite les deux phases précédentes et on montre que la proposition est **vraie** sur **toutes les données** une fois la **dernière itération** de la **boucle** effectuée.
 
 ---
 
