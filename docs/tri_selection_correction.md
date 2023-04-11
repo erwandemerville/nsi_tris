@@ -311,7 +311,7 @@ On rappelle l'algorithme du **tri par sélection** et de **recherche du minimum*
 
 ## Terminaison du tri par sélection
 
-!!! tip "Variant de boucle"
+!!! success "Variant de boucle"
     On appelle **variant de boucle** toute **quantité** $v$ (qui peut être déterminée en fonction des différentes **variables** du programme) telle que :
 
     - $v$ ne prend que des valeurs **entières**,
@@ -321,9 +321,17 @@ On rappelle l'algorithme du **tri par sélection** et de **recherche du minimum*
     On exhibe un **variant de boucle** pour démontrer qu'une boucle **se termine**, en un temps fini.   
     S'il existe plusieurs boucles dans un programme, il faut trouver autant de variants qu'il y en a.
 
+!!! tip "Prouver la terminaison"
+    Concrètement, on peut prouver la **terminaison** d'un algorithme en montrant que les deux propositions suivantes sont **vraies** :
+
+    - Proposition A : les **boucles** peuvent s'exprimer sous la forme **TANT QUE** <span style="color:#23ab32">VARIANT</span> **> 0**
+    - Proposition B : le <span style="color:#23ab32">VARIANT</span> est une **suite d'entiers strictement décroissante**.
+
+    Si les deux propositions **A** et **B** sont vraies ($A \land B$), l'algorithme s'arrêtera **toujours**. Autrement (au moins l'une des deux propositions n'est pas vérifiée, $\neg(A \land B)$), il existe au moins un cas où l'algorithme ne se terminera pas.
+
 
 !!! info "Exemple"
-    Démontrons que la boucle **for** suivante se termine :
+    Démontrons que la boucle **POUR** suivante se termine :
 
     ```
     POUR i ALLANT DE 10 à 49 AVEC UN PAS DE 5:
@@ -340,7 +348,7 @@ On rappelle l'algorithme du **tri par sélection** et de **recherche du minimum*
     ```
 
     Si on note $n$ le **nombre de tours de boucle** effectué, on peut représenter les valeurs successives que va prendre $i$ sous la forme d'une suite arithmétique :  
-    $i_n = i_0 + r*n$, avec $i_0$ la **valeur initiale** de $i$ et $r$ la **raison** de la suite.
+    $i_n = i_0 + r*n$, avec $i_0$ la **valeur initiale** de $i_n$ et $r$ la **raison** de la suite.
 
     Ici, $i_0 = 10$ et $r = 5$.  
     Donc $i_n = 10 + 5n$.
@@ -354,9 +362,9 @@ On rappelle l'algorithme du **tri par sélection** et de **recherche du minimum*
     TANT QUE $60 - 5n > 0$
 
     On obtient donc notre **variant** $v_n$ qui prend la forme d'une nouvelle **suite arithmétique** :  
-    $v_n = v_0 - r*n$ avec $v_0 = 60$ pour **valeur initiale** et $r = 5$ pour **raison** de la suite.  
+    $v_n = v_0 - r*n$ avec $v_0 = 60$ pour **valeur initiale** et $r = -5$ pour **raison** de la suite.  
     Donc :  
-    $v_n = 60 - 5n$ est un **variant de la boucle** car il s'agit bien d'une quantité **entière**, **initialement positive** et qui **décroit strictement** à chaque tour de boucle.
+    $v_n = 60 - 5n$ est un **variant de la boucle** car il s'agit d'une suite **d'entiers**, **initialement positive** et qui **décroit strictement** à chaque tour de boucle (car la **raison** est **négative**).
 
     On a trouvé un **variant**, et donc **démontré la terminaison de notre boucle**.
 
@@ -379,6 +387,14 @@ On rappelle l'algorithme du **tri par sélection** et de **recherche du minimum*
         &emsp;&emsp;Renvoyer indice_min  
         **FIN ALGORITHME**
 
+???+ tip "Astuce question 1"
+    La démarche à suivre est similaire à celle de l'exemple précédent.
+
+    - Ré-écrire la boucle **POUR** sous la forme d'une boucle **TANT QUE**.
+    - Exprimer $i$ en fonction du nombre de tours de boucle $n$ sous la forme d'une **suite entière arithmétique** croissante ($i_n = i_0 + r*n$ où $i_0$ est le **terme initial** et $r$ est la **raison**).
+    - Écrire la condition du **TANT QUE** en partant de l'inégalité de départ et de l'expression de $i_n$, et tenter d'obtenir une nouvelle inégalité de la forme $v_n > 0$, où $v_n$ est une **suite d'entiers strictement décroissante**.
+    - On a trouvé un **variant** $v_n$ : La boucle se termine !
+
 !!! note "Question 2"
     Montrer enfin la terminaison de l'algorithme du **tri par sélection**.
 
@@ -396,6 +412,11 @@ On rappelle l'algorithme du **tri par sélection** et de **recherche du minimum*
         &emsp;&emsp;**FIN POUR**   
         &emsp;&emsp;Renvoyer **∅**  
         **FIN ALGORITHME**
+
+???+ tip "Astuce question 2"
+    - On a montré que `minimum`se termine,
+    - la fonction `echanger` se termine (car il s'agit simplement de trois affectations),
+    - il ne reste plus qu'à montrer que la **boucle principale** se termine, avec la même démarche que précédemment.
 
 ## Preuve de correction du tri par sélection
 
