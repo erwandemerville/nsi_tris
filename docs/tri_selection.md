@@ -73,8 +73,7 @@ Pour simplifier les choses, on commence par séparer l'algorithme de tri en **3 
     &emsp;&emsp;n ← longueur(tableau)  
     &emsp;&emsp;**POUR** debut **ALLANT DE** 0 **À** n - 2  
     &emsp;&emsp;&emsp;&emsp;indice_min ← minimum(tableau, debut)  
-    &emsp;&emsp;&emsp;&emsp;**SI** indice_min **≠** debut, **ALORS**  
-    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;echanger(tableau, debut, indice_min)  
+    &emsp;&emsp;&emsp;&emsp;echanger(tableau, debut, indice_min)  
     &emsp;&emsp;**FIN POUR**   
     &emsp;&emsp;Renvoyer **∅**  
     **FIN ALGORITHME**
@@ -126,17 +125,15 @@ Voici enfin une version en **un seul** algorithme :
     &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;**SI** tableau[i] < tableau[indice_min], **ALORS**  
     &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;indice_min ← i  
     &emsp;&emsp;&emsp;&emsp;**FIN POUR**  
-    &emsp;&emsp;&emsp;&emsp;**SI** indice_min ≠ debut, **ALORS**  
-    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;temp ← tableau[debut]  
-    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;tableau[debut] ← tableau[indice_min]  
-    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;tableau[indice_min] ← temp  
+    &emsp;&emsp;&emsp;&emsp;temp ← tableau[debut]  
+    &emsp;&emsp;&emsp;&emsp;tableau[debut] ← tableau[indice_min]  
+    &emsp;&emsp;&emsp;&emsp;tableau[indice_min] ← temp  
     &emsp;&emsp;**FIN POUR**   
     &emsp;&emsp;Renvoyer **∅**  
     **FIN ALGORITHME**
 
-!!! note "Notes"
-    - La première boucle **POUR** s'arrête à `n - 2` car si tous les éléments de l'intervalle `[0, longueur(tableau) - 2]` sont **triés**, l'élément d'**indice** `longueur(tableau) - 1` est obligatoirement déjà à la **bonne position**.
-    - La condition `SI indice_min ≠ i, ALORS` permet d'éviter d'effectuer une permutation si l'élément d'indice `i` correspond à l'élément **minimal**.
+!!! note "Note"
+    La première boucle **POUR** s'arrête à `n - 2` car si tous les éléments de l'intervalle `[0, longueur(tableau) - 2]` sont **triés**, l'élément d'**indice** `longueur(tableau) - 1` est obligatoirement déjà à la **bonne position**.
 
 !!! note "Stabilité du tri"
     Un **tri** est dit **stable** s'il préserve l’**ordonnancement initial des éléments** que l'ordre considère comme égaux.  
@@ -209,8 +206,7 @@ On rappelle l'algorithme du **tri par sélection** et de **recherche du minimum*
     &emsp;&emsp;n ← longueur(tableau)  
     &emsp;&emsp;**POUR** debut **ALLANT DE** 0 **À** n - 2  
     &emsp;&emsp;&emsp;&emsp;indice_min ← minimum(tableau, debut)  
-    &emsp;&emsp;&emsp;&emsp;**SI** indice_min **≠** debut, **ALORS**  
-    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;echanger(tableau, debut, indice_min)  
+    &emsp;&emsp;&emsp;&emsp;echanger(tableau, debut, indice_min)  
     &emsp;&emsp;**FIN POUR**   
     &emsp;&emsp;Renvoyer **∅**  
     **FIN ALGORITHME**
@@ -239,19 +235,56 @@ On rappelle l'algorithme du **tri par sélection** et de **recherche du minimum*
     | itération k = | `debut` | tableau après itération k | nombre de comparaisons |
     | ------------- | ------- | ------------------------- | ---------------------- |
     | 1             | 0       | [1, **7, 3, 6, 5, 2**]    | ...                    |
-    | 2             | 1       | [3, 2, **1, 6, 5, 7**]    | ...                    |
-    | 3             | 2       | [3, 7, 1, **6, 5, 2**]    | ...                    |
-    | 4             | 3       | [3, 7, 1, 2, **5, 6**]    | ...                    |
-    | 5             | 4       | [3, 7, 1, 6, 5, **6**]    | ...                    |
+    | 2             | 1       | [1, 2, **3, 6, 5, 7**]    | ...                    |
+    | 3             | 2       | [1, 2, 3, **6, 5, 7**]    | ...                    |
+    | 4             | 3       | [1, 2, 3, 5, **6, 7**]    | ...                    |
+    | 5             | 4       | [1, 2, 3, 5, 6, **7**]    | ...                    |
 
     Calculer le nombre de comparaisons **au total**, noté $C(6)$, effectué pour trier ce tableau.
 
 !!! note "Question 2"
-    Si l'on change les valeurs du tableau de la question précédente, le **nombre de comparaisons** change t-il ? Pourquoi ?
+    Si l'on change les éléments du tableau de la question précédente, le **nombre de comparaisons** change t-il ? Pourquoi ?
 
 !!! note "Question 3"
     Calculer le **nombre de comparaisons**, noté $C(n)$, pour un tableau de taille $n$.  
     Finalement, quelle est la **complexité** du **tri par sélection** ? (Voir l'aide ci-dessous si nécessaire.)
+
+!!! tip "Calcul de la somme des termes d'une suite arithmétique"
+    On rappelle la formule permettant de calculer la somme des $n + 1$ premiers termes d'une **suite arithmétique** :
+
+    $$
+    S = u_0 + u_1 + ... + u_n
+    $$
+
+    $$
+    S = \frac{n+1}{2}(u_0 + u_n)
+    $$
+
+    $$
+    S = \frac{(1er~terme + dernier~terme) \times (nombre~de~termes)}{2}
+    $$
+
+    Par exemple :
+
+    $$
+    S = 1 + 2 + ... + n = \frac{n(n+1)}{2}
+    $$
+
+    $$
+    S = \sum_{x=0}^{n}x = \frac{n(n+1)}{2}
+    $$
+
+??? tip "Réponse 3"
+    $$
+    C(n) = 1 + 2 + [...] + (n - 2) + (n - 1) = \frac{(n - 1)n}{2}
+    $$
+
+    $$
+    C(n) = \sum_{x=1}^{n-1}x = \frac{(n - 1)n}{2}
+    $$
+
+    La complexité est donc **quadratique** (si l'on double la taille du tableau en entrée, le temps d'exécution sera multiplié par 4.)  
+    Étant donné que la complexité est la même quels que soient les éléments du tableau fourni en entrée, on peut utiliser la notation **grand-theta**. On peut écrire que la complexité de l'algorithme du **tri par sélection** est en $\Theta(n^2)$.
 
 !!! tip "Rappel sur les complexités"
     Voici un rappel sur les différentes complexités :
@@ -279,11 +312,250 @@ On rappelle l'algorithme du **tri par sélection** et de **recherche du minimum*
 ## Terminaison du tri par sélection
 
 !!! tip "Variant de boucle"
-    Un **variant de boucle** est un **entier naturel** qui **décroit strictement** à chaque tour de boucle.  
-    On exhibe un **variant de boucle** pour démontrer qu'une boucle **se termine**, en un temps fini.
+    On appelle **variant de boucle** toute **quantité** $v$ (qui peut être déterminée en fonction des différentes **variables** du programme) telle que :
 
-à suivre...
+    - $v$ ne prend que des valeurs **entières**,
+    - $v$ est initialement **positive**,
+    - $v$ **décroit strictement** à chaque passage dans la boucle.
+    
+    On exhibe un **variant de boucle** pour démontrer qu'une boucle **se termine**, en un temps fini.   
+    S'il existe plusieurs boucles dans un programme, il faut trouver autant de variants qu'il y en a.
+
+
+!!! info "Exemple"
+    Démontrons que la boucle **for** suivante se termine :
+
+    ```
+    POUR i ALLANT DE 10 à 49 AVEC UN PAS DE 5:
+        Instructions ne modifiant pas la valeur de i...
+    ```
+
+    On peut ré-écrire cette boucle **POUR** avec une boucle **TANT QUE** :
+
+    ```
+    i = 10
+    TANT QUE i < 50:
+        Instructions ne modifiant pas la valeur de i...
+        i = i + 5
+    ```
+
+    Si on note $n$ le **nombre de tours de boucle** effectué, on peut représenter les valeurs successives que va prendre $i$ sous la forme d'une suite arithmétique :  
+    $i_n = i_0 + r*n$, avec $i_0$ la **valeur initiale** de $i$ et $r$ la **raison** de la suite.
+
+    Ici, $i_0 = 10$ et $r = 5$.  
+    Donc $i_n = 10 + 5n$.
+
+    On peut donc ré-écrire la condition **TANT QUE** de la manière suivante :
+
+    TANT QUE $i_n < 50$  
+    TANT QUE $10 + 5n < 50$  
+    TANT QUE $0 < 50 - 10 - 5n$  
+    TANT QUE $50 - 10 - 5n > 0$  
+    TANT QUE $60 - 5n > 0$
+
+    On obtient donc notre **variant** $v_n$ qui prend la forme d'une nouvelle **suite arithmétique** :  
+    $v_n = v_0 - r*n$ avec $v_0 = 60$ pour **valeur initiale** et $r = 5$ pour **raison** de la suite.  
+    Donc :  
+    $v_n = 60 - 5n$ est un **variant de la boucle** car il s'agit bien d'une quantité **entière**, **initialement positive** et qui **décroit strictement** à chaque tour de boucle.
+
+    On a trouvé un **variant**, et donc **démontré la terminaison de notre boucle**.
+
+!!! note "Question 1"
+    Montrer la terminaison de l'algorithme de **recherche du minimum**.
+
+    ??? abstract "Algorithme de recherche du minimum"
+        **ALGORITHME** : minimum  
+        **ENTRÉES** :  
+        &nbsp;&nbsp;&nbsp;&nbsp;`tableau` : un **tableau** d'éléments  
+        &nbsp;&nbsp;&nbsp;&nbsp;`debut` : l'**indice** à partir duquel effectuer la recherche  
+        **SORTIE** : l'**indice** de l'élément minimal dans l'intervalle `[debut, longueur(tableau) - 1]` du tableau
+
+        **DÉBUT**  
+        &emsp;&emsp;indice_min ← debut  
+        &emsp;&emsp;**POUR** i **ALLANT DE** debut + 1 **À** longueur(tableau) - 1  
+        &emsp;&emsp;&emsp;**SI** tableau[i] < tableau[indice_min], **ALORS**  
+        &emsp;&emsp;&emsp;&emsp;indice_min ← i  
+        &emsp;&emsp;**FIN POUR**  
+        &emsp;&emsp;Renvoyer indice_min  
+        **FIN ALGORITHME**
+
+!!! note "Question 2"
+    Montrer enfin la terminaison de l'algorithme du **tri par sélection**.
+
+    ??? abstract "Algorithme du tri par sélection"
+        **ALGORITHME** : tri_selection  
+        **ENTRÉES** :  
+        &nbsp;&nbsp;&nbsp;&nbsp;`tableau` : un **tableau** d'éléments pouvant être **comparés**  
+        **SORTIE** : aucune (tri *en place*)
+
+        **DÉBUT**  
+        &emsp;&emsp;n ← longueur(tableau)  
+        &emsp;&emsp;**POUR** debut **ALLANT DE** 0 **À** n - 2  
+        &emsp;&emsp;&emsp;&emsp;indice_min ← minimum(tableau, debut)  
+        &emsp;&emsp;&emsp;&emsp;echanger(tableau, debut, indice_min)  
+        &emsp;&emsp;**FIN POUR**   
+        &emsp;&emsp;Renvoyer **∅**  
+        **FIN ALGORITHME**
 
 ## Preuve de correction du tri par sélection
 
-à venir...
+Dans les deux parties précédentes, nous avons montré :
+
+- Le **coût algorithmique** de l'algorithme du tri par sélection, qui est **toujours quadratique**, c'est-à-dire en $\Theta(n^2)$. Cela signifie que si l'on **double** la taille de l'entrée, le temps d'exécution sera à peu près **multiplié par 4**.
+- La **terminaison** de l'algorithme. On sait que l'algorithme finira toujours par se terminer.
+
+Il reste toutefois à démontrer que l'algorithme **renvoie toujours un résultat correct**.
+
+!!! warning "Attention"
+    Dans notre implémentation en Python, on a effectué quelques tests (avec une *doctest* notamment) pour vérifier le fonctionnement de l'algorithme. Toutefois, cela **ne prouve pas que l'algorithme est correct**, seulement qu'il fonctionne avec un jeu de tests défini.
+
+    Dans notre cas, il y a une **infinité d'entrées** possibles qui respectent la spécification, on ne peut donc pas démontrer la correction de notre algorithme en se contentant d'effectuer des tests.
+
+La **preuve de correction** d'un algorithme permet d'affirmer :
+
+- qu'il **fournit toujours la bonne réponse**
+- sur **toutes les entrées valides** qu'on lui donne (les entrées qui respectent les **préconditions**).
+
+Pour démontrer la correction, il faut déterminer un **invariant de boucle** pour la **boucle principale** de notre algorithme.
+
+!!! tip "Invariant de boucle"
+    On appelle **invariant de boucle** une **propriété** $P$ qui est **vraie avant et après chaque itération** de la boucle.
+
+L'invariant ainsi déterminé permettra de prouver que le résultat final après exécution est bien le résultat attendu.
+
+Il n'existe pas de méthodologie miracle permettant de déterminer systématiquement un **invariant**. Cela demande de chercher et de tester des choses jusqu'à trouver une propriété qui convienne.
+
+Une fois qu'une propriété a été déterminée, il faut la **démontrer** en utilisant un **raisonnement par récurrence**.
+
+!!! tip "Démonstration de l'invariant par récurrence"
+    Pour montrer à l'aide d'une **récurrence simple** qu'une proposition $P(k)$ est vérifiée pour tout entier $k \ge 0$, avec $k$ le nombre d'itérations de la boucle effectuées :
+    
+    - **Initialisation** : on vérifie que la proposition est **vraie** au **rang initial** $0$, c'est-à-dire **avant le premier passage** dans la **boucle**.
+    - **Conservation** : on suppose que la proposition est **vraie à un certain rang** $k \ge 0$ fixé, c'est-à-dire **après** $k$ **tours de boucle**, et on en déduit qu'elle est **vraie** au **rang suivant** $k + 1$, c'est-à-dire après **un tour de boucle en plus**. On peut écrire $P_k \implies P_{k+1}$.
+    - **Terminaison** : « par récurrence, la proposition est vraie pour tout entier $k \ge 0$. »
+
+---
+
+Dans la cas du tri par sélection, on peut décomposer le problème en :
+
+- un **sous-tableau trié** à gauche,
+- un **sous-tableau non-trié** à droite.
+
+![Sous-tableaux](images/sous-tableaux.png){ width="80%" }
+
+À chaque itération de la boucle principale, on **sélectionne le minimum** dans le **sous-tableau non-trié** et on le place à la fin du **sous-tableau trié**.
+
+Initialement (avant d'entrer la première fois dans la boucle), le **sous-tableau trié** est vide, et on y **ajoute un élément** à chaque tour de boucle.
+
+!!! success "Une proposition d'invariant"
+    On propose l'invariant $P_k$ suivant : « après $k$ tours de boucle, $k$ **éléments sont triés dans le sous-tableau** $[0, k-1]$ **de gauche**. »
+
+!!! abstract "Algorithme du tri par sélection"
+    **ALGORITHME** : tri_selection  
+    **ENTRÉES** :  
+    &nbsp;&nbsp;&nbsp;&nbsp;`tableau` : un **tableau** d'éléments pouvant être **comparés**  
+    **SORTIE** : aucune (tri *en place*)
+
+    **DÉBUT**  
+    &emsp;&emsp;n ← longueur(tableau)  
+    &emsp;&emsp;**POUR** debut **ALLANT DE** 0 **À** n - 2  
+    &emsp;&emsp;&emsp;&emsp;indice_min ← minimum(tableau, debut)  
+    &emsp;&emsp;&emsp;&emsp;echanger(tableau, debut, indice_min)  
+    &emsp;&emsp;**FIN POUR**   
+    &emsp;&emsp;Renvoyer **∅**  
+    **FIN ALGORITHME**
+
+!!! note "Question 1 : Initialisation"
+    - Après **0 tour de boucle**, c'est-à-dire avant d'entrer une première fois dans la boucle, combien y a t-il d'éléments dans le **sous-tableau trié** ?
+    - La proposition $P_0$ est-elle vérifiée ?
+
+??? tip "Réponse 1"
+    Avant d'entrer une première fois dans la boucle, le sous-tableau trié ne contient aucun élément.  
+    La proposition $P_0$ peut se lire : « après $0$ tour de boucle, $0$ **élément est trié dans le sous-tableau** $[]$ **de gauche**. »
+
+    Un tableau **vide** est bien **trié**, l'invariant est donc vérifié pour $P_0$.
+
+On a vu que l'invariant **était bien vérifié** pour $P_0$, c'est-à-dire avant d'entrer une première fois dans la boucle.
+
+!!! note "Question 2"
+    Quelle valeur va prendre `debut` lors de la **première itération** de la boucle principale ? Que va contenir `tableau[debut]` après **la première itération** de la boucle ? Combien d'éléments $k$ contiendra le **sous-tableau trié** après cette itération ?
+
+    Quelle valeur va prendre `debut` lors de la **seconde itération** de la boucle principale ? Combien d'éléments $k$ seront ainsi triés après cette itération ?
+
+    Établir une relation entre le nombre de tours de boucle $k$ et `debut`.
+
+??? tip "Réponse 2"
+    Après exécution de la première itération $k = 1$ de la boucle principale, `debut` vaut **0** et on a échangé l'élément minimal du tableau avec le premier élément (indice 0). `tableau[0]` contient donc à présent le plus petit élément du tableau.  
+    Après exécution de la seconde itération $k = 2$, on échange l'élément minimal du **sous-tableau non-trié** avec le second élément du tableau. Le nombre d'éléments triés augmente donc de 1.
+
+    | k    | `debut` | nombre d'éléments triés (= k) |
+    | ---- | ------- | ----------------------------- |
+    | 0    |         | 0                             |
+    | 1    | 0       | 1                             |
+    | 2    | 1       | 2                             |
+    | 3    | 2       | 3                             |
+
+    etc.
+
+    La relation entre $k$ et $debut$ peut donc être facilement définie : $k = debut + 1$.
+
+
+On fait maintenant l'hypotèse que $P_k$ est vraie pour un $k \ge 0$ fixé.  
+Après $k$ tours de boucle, le **sous-tableau trié** contient $k$ éléments et le tableau se compose :
+
+- d'un **sous-tableau trié** sur $[0, k-1]$
+- d'un **sous-tableau non-trié** sur $[k, longueur(tableau) - 1]$
+
+Démontrons maintenant la **conservation**.
+
+!!! note "Question 3 : Conservation"
+    Montrer que l'implication $P_k \implies P_{k+1}$ est **vraie**.
+
+??? tip "Réponse 3"
+    Définissons l'état du système à la fin de l'itération $k$ de la **boucle principale**.
+
+    À la fin de l'itération $k$, nous avons :
+
+    - $k$ éléments triés dans l'intervalle $[0, k-1]$
+    - une variable `debut` contenant $k-1$ puisque, comme déterminé dans la question précédente, $k = debut + 1$.
+
+    On suppose que $P_k$ est **vraie**, c'est-à-dire que le sous-tableau $[0, k-1]$ est **trié**.
+
+    Si l'on refait un tour de boucle, on incrémente `debut` (car boucle **POUR**).  
+    $debut = k - 1 + 1$  
+    Donc :  
+    $debut = k$
+
+    On cherche donc dans le **sous-tableau non-trié** $[k, longueur(tableau) - 1]$ l'**élément minimal** (à l'aide de la fonction `minimum`) à placer à l'indice $k$.
+
+    **FINALEMENT**, à l'issue de l'itération $k + 1$ de la boucle :
+
+    - Les éléments de $[0, k-1]$ sont **toujours triés** (on n'a pas effectué de changement).
+    - L'élément d'indice $k$ est **plus grand ou égal** aux éléments sur $[0, k - 1]$, autrement, il aurait déjà été dans le sous-tableau trié.
+
+    **Donc, après $k + 1$ itérations, les $k + 1$ éléments du sous-tableau $[0, k]$ sont triés.**
+
+    La **conservation de l'invariant** après chaque tour de boucle est ainsi démontré, et l'implication $P_k \implies P_{k+1}$ est vérifiée.
+
+Rappelons notre invariant $P_k$ : « après $k$ tours de boucle, $k$ **éléments sont triés dans le sous-tableau** $[0, k-1]$ **de gauche** » et que :
+
+- dans la phase d'**<u>initialisation</u>**, on a montré que l'**invariant** $P_0$ était **vrai avant la première itération** de la **boucle POUR principale**,
+- avec la **<u>conservation</u>**, on a montré que l'implication $P_k \implies P_{k+1}$, donc que l'**invariant** restait **vrai après chaque tour de boucle**.
+
+On rappelle que la relation entre $k$ et la variable de boucle $debut$ est $k = debut + 1$ et que :
+
+- à la fin de la **première itération** $k = 1$, `debut` vaut 0 et on a **1 élément trié**,
+- à la fin de la **seconde itération** $k = 2$, `debut` vaut 1 et on a **2 éléments triés**,
+- à la fin de la **troisième itération** $k = 3$, `debut` vaut 2 et on a **3 éléments triés**,
+- et ainsi de suite...
+
+**DONC**, à la fin de la boucle `POUR debut ALLANT DE 0 À n - 2`, `debut`vaut $n - 2$ avec $n = longueur(tableau)$ et donc :  
+$k = debut + 1$  
+$k = longueur(tableau) - 2 + 1$  
+$k = longueur(tableau) - 1$
+
+Cela signifie qu'il y a $longueur(tableau) - 1$ éléments triés, donc **tous les éléments du tableau sauf le dernier sont triés**.
+
+Or, **si tous les éléments sur** $[0, longueur(tableau) - 2]$ sont **triés**, alors **l'élément d'indice** $longueur(tableau) - 1$ est lui aussi **trié**, puisque le dernier élément est **supérieur** (ou *égal*) à tous les éléments du **sous-tableau trié**. Il est donc déjà à la **bonne position**.
+
+On a donc ainsi démontré la **correction de l'algorithme de tri par sélection**.

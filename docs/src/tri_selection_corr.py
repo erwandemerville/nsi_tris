@@ -23,7 +23,7 @@ True
 
 # ==> QUESTION 1 <==
 
-def minimum(tableau, debut):
+def minimum(tableau: list[int], debut: int) -> int:
     ''' Renvoie l'indice de la valeur minimale du tableau dans l'intervalle [debut, len(tableau) - 1].
     :param tableau: (list[int]) un tableau d'entiers
     :param debut: (int) l'indice à partir duquel on recherche le minimum
@@ -52,8 +52,7 @@ def tri_selection(tableau: list[int]) -> None:
     n = len(tableau)  # Récupérer la longueur du tableau
     for debut in range(0, n - 1):  # Parcourir tous les éléments jusqu'à l'avant dernier (*)
         indice_min = minimum(tableau, debut)  # Récupérer l'indice du minimum
-        if indice_min != debut:  # Si l'élément de valeur minimale n'est pas déjà à sa place
-            echanger(tableau, debut, indice_min)  # Echanger les éléments d'indices debut et indice_min
+        echanger(tableau, debut, indice_min)  # Echanger les éléments d'indices debut et indice_min
 
 # (*) On ne parcourt pas jusqu'au dernier élément car si les éléments du tableau dans l'intervalle
 # [0, len(tableau) - 2] sont triés, l'élément d'indice len(tableau) - 1 est à sa bonne position.
@@ -71,11 +70,10 @@ def tri_selection_tout_en_un(tableau: list[int]) -> None:
         for i in range(debut + 1, len(tableau)):  # Parcourir tous les éléments du tableau à partir de debut + 1
             if tableau[i] < tableau[indice_min]:  # Si l'élément d'indice i est inférieur à celui d'indice indice_min
                 indice_min = i  # Le nouvel indice du minimum est i
-        if indice_min != debut:  # Si l'élément de valeur minimale n'est pas déjà à sa place
-                # On effectue une permutation
-                temp = tableau[debut]
-                tableau[debut] = tableau[indice_min]
-                tableau[indice_min] = temp
+        # On effectue une permutation
+        temp = tableau[debut]
+        tableau[debut] = tableau[indice_min]
+        tableau[indice_min] = temp
 
 # ==> QUESTION 3 <==
 
@@ -89,11 +87,10 @@ def tri_selection_decroissant(tableau: list[int]) -> None:
         for i in range(debut + 1, len(tableau)):  # Parcourir tous les éléments du tableau à partir de debut + 1
             if tableau[i] > tableau[indice_max]:  # Si l'élément d'indice i est inférieur à celui d'indice indice_max
                 indice_max = i  # Le nouvel indice du minimum est i
-        if indice_max != debut:  # Si l'élément de valeur minimale n'est pas déjà à sa place
-                # On effectue une permutation
-                temp = tableau[debut]
-                tableau[debut] = tableau[indice_max]
-                tableau[indice_max] = temp
+        # On effectue une permutation
+        temp = tableau[debut]
+        tableau[debut] = tableau[indice_max]
+        tableau[indice_max] = temp
 
 # Fonctions utiles (pas à modifier)
 

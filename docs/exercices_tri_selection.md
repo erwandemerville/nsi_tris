@@ -1,3 +1,0 @@
-# Exercices sur le tri par sélection
-
-...
