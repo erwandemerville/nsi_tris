@@ -17,11 +17,10 @@ def tri_selection(tableau: list[int]) -> None:
             CNT += 1
             if tableau[i] < tableau[indice_min]:  # Si l'élément d'indice i est inférieur à celui d'indice indice_min
                 indice_min = i  # Le nouvel indice du minimum est i
-        if indice_min != debut:  # Si l'élément de valeur minimale n'est pas déjà à sa place
                 # On effectue une permutation
-                temp = tableau[debut]
-                tableau[debut] = tableau[indice_min]
-                tableau[indice_min] = temp
+        temp = tableau[debut]
+        tableau[debut] = tableau[indice_min]
+        tableau[indice_min] = temp
 
 def nombre_comparaisons(tableau: list[int]) -> None:
      ''' Affiche le nombre de comparaisons effectué par le tri par sélection d'un tableau donné. '''

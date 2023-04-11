@@ -314,6 +314,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#verifier-linvariant-avec-une-assertion" class="md-nav__link">
+    Vérifier l'invariant avec une assertion
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -415,6 +422,13 @@
         <li class="md-nav__item">
   <a href="#preuve-de-correction-du-tri-par-selection" class="md-nav__link">
     Preuve de correction du tri par sélection
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verifier-linvariant-avec-une-assertion" class="md-nav__link">
+    Vérifier l'invariant avec une assertion
   </a>
   
 </li>
@@ -757,7 +771,7 @@ S = \sum_{x=0}^{n}x = \frac{n(n+1)}{2}
 <p>Vous pouvez modifier l'instruction à la ligne <code>38</code> en changeant le tableau pour lequel vous souhaitez compter le nombre de comparaisons.</p>
 </div>
 <h2 id="terminaison-du-tri-par-selection">Terminaison du tri par sélection</h2>
-<div class="admonition tip">
+<div class="admonition success">
 <p class="admonition-title">Variant de boucle</p>
 <p>On appelle <strong>variant de boucle</strong> toute <strong>quantité</strong> <span class="arithmatex">\(v\)</span> (qui peut être déterminée en fonction des différentes <strong>variables</strong> du programme) telle que :</p>
 <ul>
@@ -768,9 +782,18 @@ S = \sum_{x=0}^{n}x = \frac{n(n+1)}{2}
 <p>On exhibe un <strong>variant de boucle</strong> pour démontrer qu'une boucle <strong>se termine</strong>, en un temps fini. <br />
 S'il existe plusieurs boucles dans un programme, il faut trouver autant de variants qu'il y en a.</p>
 </div>
+<div class="admonition tip">
+<p class="admonition-title">Prouver la terminaison</p>
+<p>Concrètement, on peut prouver la <strong>terminaison</strong> d'un algorithme en montrant que les deux propositions suivantes sont <strong>vraies</strong> :</p>
+<ul>
+<li>Proposition A : les <strong>boucles</strong> peuvent s'exprimer sous la forme <strong>TANT QUE</strong> <span style="color:#23ab32">VARIANT</span> <strong>&gt; 0</strong></li>
+<li>Proposition B : le <span style="color:#23ab32">VARIANT</span> est une <strong>suite d'entiers strictement décroissante</strong>.</li>
+</ul>
+<p>Si les deux propositions <strong>A</strong> et <strong>B</strong> sont vraies (<span class="arithmatex">\(A \land B\)</span>), l'algorithme s'arrêtera <strong>toujours</strong>. Autrement (au moins l'une des deux propositions n'est pas vérifiée, <span class="arithmatex">\(\neg(A \land B)\)</span>), il existe au moins un cas où l'algorithme ne se terminera pas.</p>
+</div>
 <div class="admonition info">
 <p class="admonition-title">Exemple</p>
-<p>Démontrons que la boucle <strong>for</strong> suivante se termine :</p>
+<p>Démontrons que la boucle <strong>POUR</strong> suivante se termine :</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>POUR i ALLANT DE 10 à 49 AVEC UN PAS DE 5:
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    Instructions ne modifiant pas la valeur de i...
 </code></pre></div>
@@ -781,7 +804,7 @@ S'il existe plusieurs boucles dans un programme, il faut trouver autant de varia
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    i = i + 5
 </code></pre></div>
 <p>Si on note <span class="arithmatex">\(n\)</span> le <strong>nombre de tours de boucle</strong> effectué, on peut représenter les valeurs successives que va prendre <span class="arithmatex">\(i\)</span> sous la forme d'une suite arithmétique :<br />
-<span class="arithmatex">\(i_n = i_0 + r*n\)</span>, avec <span class="arithmatex">\(i_0\)</span> la <strong>valeur initiale</strong> de <span class="arithmatex">\(i\)</span> et <span class="arithmatex">\(r\)</span> la <strong>raison</strong> de la suite.</p>
+<span class="arithmatex">\(i_n = i_0 + r*n\)</span>, avec <span class="arithmatex">\(i_0\)</span> la <strong>valeur initiale</strong> de <span class="arithmatex">\(i_n\)</span> et <span class="arithmatex">\(r\)</span> la <strong>raison</strong> de la suite.</p>
 <p>Ici, <span class="arithmatex">\(i_0 = 10\)</span> et <span class="arithmatex">\(r = 5\)</span>.<br />
 Donc <span class="arithmatex">\(i_n = 10 + 5n\)</span>.</p>
 <p>On peut donc ré-écrire la condition <strong>TANT QUE</strong> de la manière suivante :</p>
@@ -791,9 +814,9 @@ TANT QUE <span class="arithmatex">\(0 &lt; 50 - 10 - 5n\)</span><br />
 TANT QUE <span class="arithmatex">\(50 - 10 - 5n &gt; 0\)</span><br />
 TANT QUE <span class="arithmatex">\(60 - 5n &gt; 0\)</span></p>
 <p>On obtient donc notre <strong>variant</strong> <span class="arithmatex">\(v_n\)</span> qui prend la forme d'une nouvelle <strong>suite arithmétique</strong> :<br />
-<span class="arithmatex">\(v_n = v_0 - r*n\)</span> avec <span class="arithmatex">\(v_0 = 60\)</span> pour <strong>valeur initiale</strong> et <span class="arithmatex">\(r = 5\)</span> pour <strong>raison</strong> de la suite.<br />
+<span class="arithmatex">\(v_n = v_0 - r*n\)</span> avec <span class="arithmatex">\(v_0 = 60\)</span> pour <strong>valeur initiale</strong> et <span class="arithmatex">\(r = -5\)</span> pour <strong>raison</strong> de la suite.<br />
 Donc :<br />
-<span class="arithmatex">\(v_n = 60 - 5n\)</span> est un <strong>variant de la boucle</strong> car il s'agit bien d'une quantité <strong>entière</strong>, <strong>initialement positive</strong> et qui <strong>décroit strictement</strong> à chaque tour de boucle.</p>
+<span class="arithmatex">\(v_n = 60 - 5n\)</span> est un <strong>variant de la boucle</strong> car il s'agit d'une suite <strong>d'entiers</strong>, <strong>initialement positive</strong> et qui <strong>décroit strictement</strong> à chaque tour de boucle (car la <strong>raison</strong> est <strong>négative</strong>).</p>
 <p>On a trouvé un <strong>variant</strong>, et donc <strong>démontré la terminaison de notre boucle</strong>.</p>
 </div>
 <div class="admonition note">
@@ -816,6 +839,16 @@ Donc :<br />
 <strong>FIN ALGORITHME</strong></p>
 </details>
 </div>
+<details class="tip" open="open">
+<summary>Astuce question 1</summary>
+<p>La démarche à suivre est similaire à celle de l'exemple précédent.</p>
+<ul>
+<li>Ré-écrire la boucle <strong>POUR</strong> sous la forme d'une boucle <strong>TANT QUE</strong>.</li>
+<li>Exprimer <span class="arithmatex">\(i\)</span> en fonction du nombre de tours de boucle <span class="arithmatex">\(n\)</span> sous la forme d'une <strong>suite entière arithmétique</strong> croissante (<span class="arithmatex">\(i_n = i_0 + r*n\)</span> où <span class="arithmatex">\(i_0\)</span> est le <strong>terme initial</strong> et <span class="arithmatex">\(r\)</span> est la <strong>raison</strong>).</li>
+<li>Écrire la condition du <strong>TANT QUE</strong> en partant de l'inégalité de départ et de l'expression de <span class="arithmatex">\(i_n\)</span>, et tenter d'obtenir une nouvelle inégalité de la forme <span class="arithmatex">\(v_n &gt; 0\)</span>, où <span class="arithmatex">\(v_n\)</span> est une <strong>suite d'entiers strictement décroissante</strong>.</li>
+<li>On a trouvé un <strong>variant</strong> <span class="arithmatex">\(v_n\)</span> : La boucle se termine !</li>
+</ul>
+</details>
 <div class="admonition note">
 <p class="admonition-title">Question 2</p>
 <p>Montrer enfin la terminaison de l'algorithme du <strong>tri par sélection</strong>.</p>
@@ -835,6 +868,14 @@ Donc :<br />
 <strong>FIN ALGORITHME</strong></p>
 </details>
 </div>
+<details class="tip" open="open">
+<summary>Astuce question 2</summary>
+<ul>
+<li>On a montré que <code>minimum</code>se termine,</li>
+<li>la fonction <code>echanger</code> se termine (car il s'agit simplement de trois affectations),</li>
+<li>il ne reste plus qu'à montrer que la <strong>boucle principale</strong> se termine, avec la même démarche que précédemment.</li>
+</ul>
+</details>
 <h2 id="preuve-de-correction-du-tri-par-selection">Preuve de correction du tri par sélection</h2>
 <p>Dans les deux parties précédentes, nous avons montré :</p>
 <ul>
@@ -941,6 +982,52 @@ Après <span class="arithmatex">\(k\)</span> tours de boucle, le <strong>sous-ta
 <p>Cela signifie qu'il y a <span class="arithmatex">\(longueur(tableau) - 1\)</span> éléments triés, donc <strong>tous les éléments du tableau sauf le dernier sont triés</strong>.</p>
 <p>Or, <strong>si tous les éléments sur</strong> <span class="arithmatex">\([0, longueur(tableau) - 2]\)</span> sont <strong>triés</strong>, alors <strong>l'élément d'indice</strong> <span class="arithmatex">\(longueur(tableau) - 1\)</span> est lui aussi <strong>trié</strong>, puisque le dernier élément est <strong>supérieur</strong> (ou <em>égal</em>) à tous les éléments du <strong>sous-tableau trié</strong>. Il est donc déjà à la <strong>bonne position</strong>.</p>
 <p>On a donc ainsi démontré la <strong>correction de l'algorithme de tri par sélection</strong>.</p>
+<h2 id="verifier-linvariant-avec-une-assertion">Vérifier l'invariant avec une assertion</h2>
+<p>Vérifions la validité de notre <strong>invariant</strong> sur la fonction <code>tri_selection</code> réalisée précédemment en <strong>Python</strong>.</p>
+<p>La fonction <code>est_trie(tableau, fin)</code> renvoie <code>True</code> si les éléments du <strong>sous-tableau</strong> <code>[0, fin]</code> du tableau donné sont <strong>triés</strong>, <code>False</code> sinon. Si l'indice <code>fin</code> n'est pas donné, la fonction vérifie que l'<strong>entièreté</strong> du tableau est <strong>triée</strong>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">def</span> <span class="nf">est_trie</span><span class="p">(</span><span class="n">tableau</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">fin</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="sd">&#39;&#39;&#39; Renvoie True si les éléments du tableau dans [0, fin] sont triés, </span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="sd">    False sinon. Si pas d&#39;indice de fin donné, vérifier tout le tableau.</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="sd">    :param tableau: (list[int]) tableau d&#39;entiers à vérifier</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="sd">    :param debut: (int) indice jusqu&#39;auquel vérifier les éléments</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="sd">    :return: (bool) True ou False selon si les éléments sont triés ou non. &#39;&#39;&#39;</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="k">if</span> <span class="n">fin</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span> <span class="n">fin</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tableau</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="k">return</span> <span class="nb">all</span><span class="p">(</span><span class="n">tableau</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">tableau</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">fin</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Note</p>
+<p>La fonction native <code>all(iterable)</code> utilisée dans la fonction ci-dessus renvoie <code>True</code> si tous les éléments de <code>iterable</code> sont vrais (ou s'il est vide). Dès qu'un élément est faux, la fonction s'arrête et renvoie <code>False</code>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Question 1</p>
+<p>Modifier la fonction <code>tri_selection</code> en ajoutant une <strong>assertion</strong> (avec le mot-clé <code>assert</code>) vérifiant, en faisant appel à <code>est_trie</code>, qu'après chaque itération de la boucle, la propriété de l'<strong>invariant</strong> est respectée.</p>
+</div>
+<details class="tip">
+<summary>Réponse 1</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">def</span> <span class="nf">tri_selection</span><span class="p">(</span><span class="n">tableau</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="sd">&#39;&#39;&#39; Effectue le tri par sélection en place des éléments d&#39;un tableau donné.</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="sd">    :param tableau: (list[int]) un tableau d&#39;entiers à trier &#39;&#39;&#39;</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tableau</span><span class="p">)</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="k">for</span> <span class="n">debut</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>        <span class="n">indice_min</span> <span class="o">=</span> <span class="n">minimum</span><span class="p">(</span><span class="n">tableau</span><span class="p">,</span> <span class="n">debut</span><span class="p">)</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>        <span class="n">echanger</span><span class="p">(</span><span class="n">tableau</span><span class="p">,</span> <span class="n">debut</span><span class="p">,</span> <span class="n">indice_min</span><span class="p">)</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>        <span class="k">assert</span> <span class="n">est_trie</span><span class="p">(</span><span class="n">tableau</span><span class="p">,</span> <span class="n">debut</span><span class="p">)</span>
+</code></pre></div>
+<p>À la fin de chaque itération, on vérifie avec la fonction <code>est_trie</code> que le sous-tableau <code>[0, debut]</code> <strong>est trié</strong>.</p>
+</details>
+<p>Dans l'<strong>interpréteur</strong> de <em>Thonny</em>, exécuter la commande suivante :<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="o">&gt;&gt;&gt;</span> <span class="n">tri_selection</span><span class="p">([[</span><span class="mi">63</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">81</span><span class="p">,</span> <span class="mi">76</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">87</span><span class="p">,</span> <span class="mi">66</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">68</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">98</span><span class="p">,</span> <span class="mi">57</span><span class="p">,</span> <span class="mi">41</span><span class="p">,</span> <span class="mi">97</span><span class="p">,</span> <span class="mi">59</span><span class="p">,</span> <span class="mi">57</span><span class="p">,</span> <span class="mi">74</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">]])</span>
+</code></pre></div></p>
+<div class="admonition note">
+<p class="admonition-title">Question 2</p>
+<p>Que se passe t-il ? Pourquoi ?</p>
+</div>
+<details class="tip">
+<summary>Réponse 2</summary>
+<p>S'il ne se passe rien, c'est normal ! Cela signifie que l'expression spécifiée dans l'assertion est évaluée à <code>True</code> à chaque fois, et donc que l'<strong>invariant</strong> est bien vérifié après chaque tour de boucle.</p>
+</details>
 
 
 
