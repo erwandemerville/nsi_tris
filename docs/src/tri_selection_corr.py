@@ -10,14 +10,14 @@ l'exécution de ce programme. S'il ne se passe rien, cela signifie que les tests
 :Exemples:
 
 >>> l = [9, 1, 7, 3, 5, 2, 6]
->>> est_triee(l)
+>>> est_trie(l)
 False
 >>> tri_selection(l)
->>> est_triee(l)
+>>> est_trie(l)
 True
 >>> l = [randint(0, 100) for _ in range(20)]
 >>> tri_selection(l)
->>> est_triee(l)
+>>> est_trie(l)
 True
 '''
 
@@ -92,14 +92,17 @@ def tri_selection_decroissant(tableau: list[int]) -> None:
         tableau[debut] = tableau[indice_max]
         tableau[indice_max] = temp
 
-# Fonctions utiles (pas à modifier)
+# Fonctions utiles (ne pas modifier)
 
-def est_triee(tableau: list[int]) -> bool:
-    ''' Renvoie True si le tableau donnée est triée, False sinon. 
-    :param tableau: (list[int]) tableau d'entiers à vérifier 
-    :return: (bool) True ou False selon si le tableau est triée ou non. '''
+def est_trie(tableau: list[int], fin: int = None) -> bool:
+    ''' Renvoie True si les éléments du tableau dans [0, fin] sont triés, False sinon.
+    Si pas d'indice de fin donné, vérifier tout le tableau.
+    :param tableau: (list[int]) tableau d'entiers à vérifier
+    :param debut: (int) indice jusqu'auquel vérifier les éléments
+    :return: (bool) True ou False selon si les éléments sont triés ou non. '''
 
-    return all(tableau[i - 1] <= tableau[i] for i in range(1, len(tableau)))
+    if fin == None: fin = len(tableau) - 1
+    return all(tableau[i - 1] <= tableau[i] for i in range(1, fin + 1))
 
 if __name__ == '__main__':
     ''' Instructions exécutées si l'on exécute ce fichier directement '''

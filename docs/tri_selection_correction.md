@@ -559,3 +559,53 @@ Cela signifie qu'il y a $longueur(tableau) - 1$ éléments triés, donc **tous l
 Or, **si tous les éléments sur** $[0, longueur(tableau) - 2]$ sont **triés**, alors **l'élément d'indice** $longueur(tableau) - 1$ est lui aussi **trié**, puisque le dernier élément est **supérieur** (ou *égal*) à tous les éléments du **sous-tableau trié**. Il est donc déjà à la **bonne position**.
 
 On a donc ainsi démontré la **correction de l'algorithme de tri par sélection**.
+
+## Vérifier l'invariant avec une assertion
+
+Vérifions la validité de notre **invariant** sur la fonction `tri_selection` réalisée précédemment en **Python**.
+
+La fonction `est_trie(tableau, fin)` renvoie `True` si les éléments du **sous-tableau** `[0, fin]` du tableau donné sont **triés**, `False` sinon. Si l'indice `fin` n'est pas donné, la fonction vérifie que l'**entièreté** du tableau est **triée**.
+
+```python
+def est_trie(tableau: list[int], fin: int = None) -> bool:
+    ''' Renvoie True si les éléments du tableau dans [0, fin] sont triés, 
+    False sinon. Si pas d'indice de fin donné, vérifier tout le tableau.
+    :param tableau: (list[int]) tableau d'entiers à vérifier
+    :param debut: (int) indice jusqu'auquel vérifier les éléments
+    :return: (bool) True ou False selon si les éléments sont triés ou non. '''
+
+    if fin == None: fin = len(tableau) - 1
+    return all(tableau[i - 1] <= tableau[i] for i in range(1, fin + 1))
+```
+
+!!! tip "Note"
+    La fonction native `all(iterable)` utilisée dans la fonction ci-dessus renvoie `True` si tous les éléments de `iterable` sont vrais (ou s'il est vide). Dès qu'un élément est faux, la fonction s'arrête et renvoie `False`.
+
+!!! note "Question 1"
+    Modifier la fonction `tri_selection` en ajoutant une **assertion** (avec le mot-clé `assert`) vérifiant, en faisant appel à `est_trie`, qu'après chaque itération de la boucle, la propriété de l'**invariant** est respectée.
+
+??? tip "Réponse 1"
+    ```python
+    def tri_selection(tableau: list[int]) -> None:
+        ''' Effectue le tri par sélection en place des éléments d'un tableau donné.
+        :param tableau: (list[int]) un tableau d'entiers à trier '''
+
+        n = len(tableau)
+        for debut in range(0, n - 1):
+            indice_min = minimum(tableau, debut)
+            echanger(tableau, debut, indice_min)
+            assert est_trie(tableau, debut)
+    ```
+
+    À la fin de chaque itération, on vérifie avec la fonction `est_trie` que le sous-tableau `[0, debut]` **est trié**.
+
+Dans l'**interpréteur** de *Thonny*, exécuter la commande suivante :  
+```python
+>>> tri_selection([[63, 25, 81, 76, 75, 87, 66, 18, 43, 68, 48, 98, 57, 41, 97, 59, 57, 74, 28, 28]])
+```
+
+!!! note "Question 2"
+    Que se passe t-il ? Pourquoi ?
+
+??? tip "Réponse 2"
+    S'il ne se passe rien, c'est normal ! Cela signifie que l'expression spécifiée dans l'assertion est évaluée à `True` à chaque fois, et donc que l'**invariant** est bien vérifié après chaque tour de boucle.
