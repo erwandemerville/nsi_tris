@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="https://erwandemerville.github.io/nsi_tris/tri_selection/">
+        <link rel="canonical" href="https://erwandemerville.github.io/nsi_tris/tri_selection_correction/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
-        <title>Tri par sélection - NSI première - Algos de tri</title>
+        <title>Le tri par sélection - NSI première - Algos de tri</title>
       
     
     
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Tri par sélection
+              Le tri par sélection
             
           </span>
         </div>
@@ -185,16 +185,14 @@
 
   
   
-    
-  
   
     
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
       
       
       
@@ -215,109 +213,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Tri par sélection
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../tri_selection/" class="md-nav__link">
         Tri par sélection
       </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="Sur cette page">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Sur cette page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#presentation-du-tri" class="md-nav__link">
-    Présentation du tri
-  </a>
-  
-    <nav class="md-nav" aria-label="Présentation du tri">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#avec-un-jeu-de-cartes" class="md-nav__link">
-    Avec un jeu de cartes
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#simulation-avec-des-barres" class="md-nav__link">
-    Simulation avec des barres
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#lalgorithme" class="md-nav__link">
-    L'algorithme
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#implementation-du-tri-par-selection" class="md-nav__link">
-    Implémentation du tri par sélection
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cout-du-tri-par-selection" class="md-nav__link">
-    Coût du tri par sélection
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#terminaison-du-tri-par-selection" class="md-nav__link">
-    Terminaison du tri par sélection
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#preuve-de-correction-du-tri-par-selection" class="md-nav__link">
-    Preuve de correction du tri par sélection
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -733,6 +633,17 @@ S = 1 + 2 + ... + n = \frac{n(n+1)}{2}
 S = \sum_{x=0}^{n}x = \frac{n(n+1)}{2}
 \]</div>
 </div>
+<details class="tip">
+<summary>Réponse 3</summary>
+<div class="arithmatex">\[
+C(n) = 1 + 2 + [...] + (n - 2) + (n - 1) = \frac{(n - 1)n}{2}
+\]</div>
+<div class="arithmatex">\[
+C(n) = \sum_{x=1}^{n-1}x = \frac{(n - 1)n}{2}
+\]</div>
+<p>La complexité est donc <strong>quadratique</strong> (si l'on double la taille du tableau en entrée, le temps d'exécution sera multiplié par 4.)<br />
+Étant donné que la complexité est la même quels que soient les éléments du tableau fourni en entrée, on peut utiliser la notation <strong>grand-theta</strong>. On peut écrire que la complexité de l'algorithme du <strong>tri par sélection</strong> est en <span class="arithmatex">\(\Theta(n^2)\)</span>.</p>
+</details>
 <div class="admonition tip">
 <p class="admonition-title">Rappel sur les complexités</p>
 <p>Voici un rappel sur les différentes complexités :</p>
@@ -904,6 +815,12 @@ Donc :<br />
 <li>La proposition <span class="arithmatex">\(P_0\)</span> est-elle vérifiée ?</li>
 </ul>
 </div>
+<details class="tip">
+<summary>Réponse 1</summary>
+<p>Avant d'entrer une première fois dans la boucle, le sous-tableau trié ne contient aucun élément.<br />
+La proposition <span class="arithmatex">\(P_0\)</span> peut se lire : « après <span class="arithmatex">\(0\)</span> tour de boucle, <span class="arithmatex">\(0\)</span> <strong>élément est trié dans le sous-tableau</strong> <span class="arithmatex">\([]\)</span> <strong>de gauche</strong>. »</p>
+<p>Un tableau <strong>vide</strong> est bien <strong>trié</strong>, l'invariant est donc vérifié pour <span class="arithmatex">\(P_0\)</span>.</p>
+</details>
 <p>On a vu que l'invariant <strong>était bien vérifié</strong> pour <span class="arithmatex">\(P_0\)</span>, c'est-à-dire avant d'entrer une première fois dans la boucle.</p>
 <div class="admonition note">
 <p class="admonition-title">Question 2</p>
@@ -911,6 +828,44 @@ Donc :<br />
 <p>Quelle valeur va prendre <code>debut</code> lors de la <strong>seconde itération</strong> de la boucle principale ? Combien d'éléments <span class="arithmatex">\(k\)</span> seront ainsi triés après cette itération ?</p>
 <p>Établir une relation entre le nombre de tours de boucle <span class="arithmatex">\(k\)</span> et <code>debut</code>.</p>
 </div>
+<details class="tip">
+<summary>Réponse 2</summary>
+<p>Après exécution de la première itération <span class="arithmatex">\(k = 1\)</span> de la boucle principale, <code>debut</code> vaut <strong>0</strong> et on a échangé l'élément minimal du tableau avec le premier élément (indice 0). <code>tableau[0]</code> contient donc à présent le plus petit élément du tableau.<br />
+Après exécution de la seconde itération <span class="arithmatex">\(k = 2\)</span>, on échange l'élément minimal du <strong>sous-tableau non-trié</strong> avec le second élément du tableau. Le nombre d'éléments triés augmente donc de 1.</p>
+<table>
+<thead>
+<tr>
+<th>k</th>
+<th><code>debut</code></th>
+<th>nombre d'éléments triés (= k)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td></td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p>etc.</p>
+<p>La relation entre <span class="arithmatex">\(k\)</span> et <span class="arithmatex">\(debut\)</span> peut donc être facilement définie : <span class="arithmatex">\(k = debut + 1\)</span>.</p>
+</details>
 <p>On fait maintenant l'hypotèse que <span class="arithmatex">\(P_k\)</span> est vraie pour un <span class="arithmatex">\(k \ge 0\)</span> fixé.<br />
 Après <span class="arithmatex">\(k\)</span> tours de boucle, le <strong>sous-tableau trié</strong> contient <span class="arithmatex">\(k\)</span> éléments et le tableau se compose :</p>
 <ul>
@@ -922,6 +877,28 @@ Après <span class="arithmatex">\(k\)</span> tours de boucle, le <strong>sous-ta
 <p class="admonition-title">Question 3 : Conservation</p>
 <p>Montrer que l'implication <span class="arithmatex">\(P_k \implies P_{k+1}\)</span> est <strong>vraie</strong>.</p>
 </div>
+<details class="tip">
+<summary>Réponse 3</summary>
+<p>Définissons l'état du système à la fin de l'itération <span class="arithmatex">\(k\)</span> de la <strong>boucle principale</strong>.</p>
+<p>À la fin de l'itération <span class="arithmatex">\(k\)</span>, nous avons :</p>
+<ul>
+<li><span class="arithmatex">\(k\)</span> éléments triés dans l'intervalle <span class="arithmatex">\([0, k-1]\)</span></li>
+<li>une variable <code>debut</code> contenant <span class="arithmatex">\(k-1\)</span> puisque, comme déterminé dans la question précédente, <span class="arithmatex">\(k = debut + 1\)</span>.</li>
+</ul>
+<p>On suppose que <span class="arithmatex">\(P_k\)</span> est <strong>vraie</strong>, c'est-à-dire que le sous-tableau <span class="arithmatex">\([0, k-1]\)</span> est <strong>trié</strong>.</p>
+<p>Si l'on refait un tour de boucle, on incrémente <code>debut</code> (car boucle <strong>POUR</strong>).<br />
+<span class="arithmatex">\(debut = k - 1 + 1\)</span><br />
+Donc :<br />
+<span class="arithmatex">\(debut = k\)</span></p>
+<p>On cherche donc dans le <strong>sous-tableau non-trié</strong> <span class="arithmatex">\([k, longueur(tableau) - 1]\)</span> l'<strong>élément minimal</strong> (à l'aide de la fonction <code>minimum</code>) à placer à l'indice <span class="arithmatex">\(k\)</span>.</p>
+<p><strong>FINALEMENT</strong>, à l'issue de l'itération <span class="arithmatex">\(k + 1\)</span> de la boucle :</p>
+<ul>
+<li>Les éléments de <span class="arithmatex">\([0, k-1]\)</span> sont <strong>toujours triés</strong> (on n'a pas effectué de changement).</li>
+<li>L'élément d'indice <span class="arithmatex">\(k\)</span> est <strong>plus grand ou égal</strong> aux éléments sur <span class="arithmatex">\([0, k - 1]\)</span>, autrement, il aurait déjà été dans le sous-tableau trié.</li>
+</ul>
+<p><strong>Donc, après <span class="arithmatex">\(k + 1\)</span> itérations, les <span class="arithmatex">\(k + 1\)</span> éléments du sous-tableau <span class="arithmatex">\([0, k]\)</span> sont triés.</strong></p>
+<p>La <strong>conservation de l'invariant</strong> après chaque tour de boucle est ainsi démontré, et l'implication <span class="arithmatex">\(P_k \implies P_{k+1}\)</span> est vérifiée.</p>
+</details>
 <p>Rappelons notre invariant <span class="arithmatex">\(P_k\)</span> : « après <span class="arithmatex">\(k\)</span> tours de boucle, <span class="arithmatex">\(k\)</span> <strong>éléments sont triés dans le sous-tableau</strong> <span class="arithmatex">\([0, k-1]\)</span> <strong>de gauche</strong> » et que :</p>
 <ul>
 <li>dans la phase d'<strong><u>initialisation</u></strong>, on a montré que l'<strong>invariant</strong> <span class="arithmatex">\(P_0\)</span> était <strong>vrai avant la première itération</strong> de la <strong>boucle POUR principale</strong>,</li>
