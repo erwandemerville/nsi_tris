@@ -274,6 +274,18 @@ On rappelle l'algorithme du **tri par sélection** et de **recherche du minimum*
     S = \sum_{x=0}^{n}x = \frac{n(n+1)}{2}
     $$
 
+??? tip "Réponse 3"
+    $$
+    C(n) = 1 + 2 + [...] + (n - 2) + (n - 1) = \frac{(n - 1)n}{2}
+    $$
+
+    $$
+    C(n) = \sum_{x=1}^{n-1}x = \frac{(n - 1)n}{2}
+    $$
+
+    La complexité est donc **quadratique** (si l'on double la taille du tableau en entrée, le temps d'exécution sera multiplié par 4.)  
+    Étant donné que la complexité est la même quels que soient les éléments du tableau fourni en entrée, on peut utiliser la notation **grand-theta**. On peut écrire que la complexité de l'algorithme du **tri par sélection** est en $\Theta(n^2)$.
+
 !!! tip "Rappel sur les complexités"
     Voici un rappel sur les différentes complexités :
     
@@ -457,6 +469,12 @@ Initialement (avant d'entrer la première fois dans la boucle), le **sous-tablea
     - Après **0 tour de boucle**, c'est-à-dire avant d'entrer une première fois dans la boucle, combien y a t-il d'éléments dans le **sous-tableau trié** ?
     - La proposition $P_0$ est-elle vérifiée ?
 
+??? tip "Réponse 1"
+    Avant d'entrer une première fois dans la boucle, le sous-tableau trié ne contient aucun élément.  
+    La proposition $P_0$ peut se lire : « après $0$ tour de boucle, $0$ **élément est trié dans le sous-tableau** $[]$ **de gauche**. »
+
+    Un tableau **vide** est bien **trié**, l'invariant est donc vérifié pour $P_0$.
+
 On a vu que l'invariant **était bien vérifié** pour $P_0$, c'est-à-dire avant d'entrer une première fois dans la boucle.
 
 !!! note "Question 2"
@@ -465,6 +483,21 @@ On a vu que l'invariant **était bien vérifié** pour $P_0$, c'est-à-dire avan
     Quelle valeur va prendre `debut` lors de la **seconde itération** de la boucle principale ? Combien d'éléments $k$ seront ainsi triés après cette itération ?
 
     Établir une relation entre le nombre de tours de boucle $k$ et `debut`.
+
+??? tip "Réponse 2"
+    Après exécution de la première itération $k = 1$ de la boucle principale, `debut` vaut **0** et on a échangé l'élément minimal du tableau avec le premier élément (indice 0). `tableau[0]` contient donc à présent le plus petit élément du tableau.  
+    Après exécution de la seconde itération $k = 2$, on échange l'élément minimal du **sous-tableau non-trié** avec le second élément du tableau. Le nombre d'éléments triés augmente donc de 1.
+
+    | k    | `debut` | nombre d'éléments triés (= k) |
+    | ---- | ------- | ----------------------------- |
+    | 0    |         | 0                             |
+    | 1    | 0       | 1                             |
+    | 2    | 1       | 2                             |
+    | 3    | 2       | 3                             |
+
+    etc.
+
+    La relation entre $k$ et $debut$ peut donc être facilement définie : $k = debut + 1$.
 
 
 On fait maintenant l'hypotèse que $P_k$ est vraie pour un $k \ge 0$ fixé.  
@@ -477,6 +510,32 @@ Démontrons maintenant la **conservation**.
 
 !!! note "Question 3 : Conservation"
     Montrer que l'implication $P_k \implies P_{k+1}$ est **vraie**.
+
+??? tip "Réponse 3"
+    Définissons l'état du système à la fin de l'itération $k$ de la **boucle principale**.
+
+    À la fin de l'itération $k$, nous avons :
+
+    - $k$ éléments triés dans l'intervalle $[0, k-1]$
+    - une variable `debut` contenant $k-1$ puisque, comme déterminé dans la question précédente, $k = debut + 1$.
+
+    On suppose que $P_k$ est **vraie**, c'est-à-dire que le sous-tableau $[0, k-1]$ est **trié**.
+
+    Si l'on refait un tour de boucle, on incrémente `debut` (car boucle **POUR**).  
+    $debut = k - 1 + 1$  
+    Donc :  
+    $debut = k$
+
+    On cherche donc dans le **sous-tableau non-trié** $[k, longueur(tableau) - 1]$ l'**élément minimal** (à l'aide de la fonction `minimum`) à placer à l'indice $k$.
+
+    **FINALEMENT**, à l'issue de l'itération $k + 1$ de la boucle :
+
+    - Les éléments de $[0, k-1]$ sont **toujours triés** (on n'a pas effectué de changement).
+    - L'élément d'indice $k$ est **plus grand ou égal** aux éléments sur $[0, k - 1]$, autrement, il aurait déjà été dans le sous-tableau trié.
+
+    **Donc, après $k + 1$ itérations, les $k + 1$ éléments du sous-tableau $[0, k]$ sont triés.**
+
+    La **conservation de l'invariant** après chaque tour de boucle est ainsi démontré, et l'implication $P_k \implies P_{k+1}$ est vérifiée.
 
 Rappelons notre invariant $P_k$ : « après $k$ tours de boucle, $k$ **éléments sont triés dans le sous-tableau** $[0, k-1]$ **de gauche** » et que :
 
