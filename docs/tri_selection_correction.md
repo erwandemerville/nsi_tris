@@ -285,7 +285,7 @@ On rappelle l'algorithme du **tri par sélection** et de **recherche du minimum*
 
     La complexité est donc **quadratique** (si l'on double la taille du tableau en entrée, le temps d'exécution sera multiplié par 4.)  
     Étant donné que la complexité est la même quels que soient les éléments du tableau fourni en entrée, on peut utiliser la notation **grand-theta**. On peut écrire que la complexité de l'algorithme du **tri par sélection** est en $\Theta(n^2)$.
-
+    
 !!! tip "Rappel sur les complexités"
     Voici un rappel sur les différentes complexités :
     
