@@ -2,22 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://erwandemerville.github.io/nsi_tris/</loc>
-         <lastmod>2023-04-11</lastmod>
+         <lastmod>2023-04-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://erwandemerville.github.io/nsi_tris/activite_preliminaire/</loc>
-         <lastmod>2023-04-11</lastmod>
+         <lastmod>2023-04-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://erwandemerville.github.io/nsi_tris/tri_selection/</loc>
-         <lastmod>2023-04-11</lastmod>
+         <lastmod>2023-04-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://erwandemerville.github.io/nsi_tris/tri_selection_correction/</loc>
-         <lastmod>2023-04-11</lastmod>
+         <lastmod>2023-04-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

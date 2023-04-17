@@ -512,7 +512,7 @@ Citer 2 structures <strong>mutables</strong> et deux structures <strong>non-muta
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Tester ma fonction</p>
-<p>Le programme est muni de <strong>tests</strong> (lignes <code>12</code> à <code>21</code>) exécutés par le module <em>Doctest</em>.<br />
+<p>Le programme est muni de <strong>tests</strong> (lignes <code>13</code> à <code>22</code>) exécutés par le module <em>Doctest</em>.<br />
 Vous pouvez donc <strong>tester vos fonctions</strong> en exécutant simplement le programme. Si rien ne se passe, c'est que tout est bon. Sinon, l'interpréteur indiquera les tests qui ont échoué.</p>
 <p>(Vous pouvez rajouter d'autres tests ou effectuer des tests sur l'interpréteur si vous le souhaitez.)</p>
 </div>
@@ -526,7 +526,7 @@ Vous pouvez donc <strong>tester vos fonctions</strong> en exécutant simplement 
 </div>
 <div class="admonition note">
 <p class="admonition-title">Question 4</p>
-<p>Dans les <strong>tests</strong>, à la ligne <code>18</code>, on trouve l'instruction <code>l = [randint(0, 100) for _ in range(20)]</code>.<br />
+<p>Dans les <strong>tests</strong>, à la ligne <code>19</code>, on trouve l'instruction <code>l = [randint(0, 100) for _ in range(20)]</code>.<br />
 Que fait cette instruction ? Quel est le nom de la <strong>méthode</strong> de <strong>création de liste</strong> utilisée ?</p>
 </div>
 <h2 id="cout-du-tri-par-selection">Coût du tri par sélection</h2>
@@ -663,8 +663,8 @@ C(n) = \sum_{x=1}^{n-1}x = \frac{(n - 1)n}{2}
 </ul>
 <p><figure markdown>
 <center>
-<img alt="Graphe des complexités" src="../images/complexites.jpeg" width="80%" />
-<figcaption>Source : <a href="https://buzut.net/cours/computer-science/time-complexity">https://buzut.net/cours/computer-science/time-complexity</a></figcaption>
+<img alt="Graphe des complexités algorithmiques" src="../images/graphique_complexites.png" />
+<figcaption>Courbes d'évolution des différentes complexités algorithmiques.<br />(généré avec <a href="../src/graphique_complexites.py" target="_blank">ce programme</a>)</figcaption>
 </center>
 </figure></p>
 </div>
@@ -811,7 +811,7 @@ Donc :<br />
 <ul>
 <li><strong>Initialisation</strong> : on vérifie que la proposition est <strong>vraie</strong> au <strong>rang initial</strong> <span class="arithmatex">\(0\)</span>, c'est-à-dire <strong>avant le premier passage</strong> dans la <strong>boucle</strong>.</li>
 <li><strong>Conservation</strong> : on suppose que la proposition est <strong>vraie à un certain rang</strong> <span class="arithmatex">\(k \ge 0\)</span> fixé, c'est-à-dire <strong>après</strong> <span class="arithmatex">\(k\)</span> <strong>tours de boucle</strong>, et on en déduit qu'elle est <strong>vraie</strong> au <strong>rang suivant</strong> <span class="arithmatex">\(k + 1\)</span>, c'est-à-dire après <strong>un tour de boucle en plus</strong>. On peut écrire <span class="arithmatex">\(P_k \implies P_{k+1}\)</span>.</li>
-<li><strong>Terminaison</strong> : « par récurrence, la proposition est vraie pour tout entier <span class="arithmatex">\(k \ge 0\)</span>. »</li>
+<li><strong>Terminaison</strong> : on exploite les deux phases précédentes et on montre que la proposition est <strong>vraie</strong> sur <strong>toutes les données</strong> une fois la <strong>dernière itération</strong> de la <strong>boucle</strong> effectuée.</li>
 </ul>
 </div>
 <hr />
