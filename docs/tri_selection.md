@@ -487,12 +487,12 @@ On rappelle l'algorithme du **tri par sélection** et de **recherche du minimum*
     TANT QUE $10 + 5n < 50$  
     TANT QUE $0 < 50 - 10 - 5n$  
     TANT QUE $50 - 10 - 5n > 0$  
-    TANT QUE $60 - 5n > 0$
+    TANT QUE $40 - 5n > 0$
 
     On obtient donc notre **variant** $v_n$ qui prend la forme d'une nouvelle **suite arithmétique** :  
-    $v_n = v_0 - r*n$ avec $v_0 = 60$ pour **valeur initiale** et $r = -5$ pour **raison** de la suite.  
+    $v_n = v_0 - r*n$ avec $v_0 = 40$ pour **valeur initiale** et $r = -5$ pour **raison** de la suite.  
     Donc :  
-    $v_n = 60 - 5n$ est un **variant de la boucle** car il s'agit d'une suite **d'entiers**, **initialement positive** et qui **décroit strictement** à chaque tour de boucle (car la **raison** est **négative**).
+    $v_n = 40 - 5n$ est un **variant de la boucle** car il s'agit d'une suite **d'entiers**, **initialement positive** et qui **décroit strictement** à chaque tour de boucle (car la **raison** est **négative**).
 
     On a trouvé un **variant**, et donc **démontré la terminaison de notre boucle**.
 

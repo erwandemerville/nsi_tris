@@ -7,6 +7,7 @@ site_url: https://erwandemerville.github.io/nsi_tris/
 nav:
   - Cours:
     - Tri par sélection: tri_selection.md
+    - Tri par insertion: tri_insertion.md
 
 markdown_extensions:
   - pymdownx.arithmatex:
