@@ -20,11 +20,12 @@ Fonction tri_par_insertion(Tableau T)
         valeur_courante = T[i]
         position = i
 
+        # Déterminer la position de l'élément à placer (valeur_courante)
         Tant que position > 0 et T[position - 1] > valeur_courante
             T[position] = T[position - 1]
             position = position - 1
 
-        T[position] = valeur_courante
+        T[position] = valeur_courante  # Placer l'élément au bon endroit
     Fin Pour
 Fin Fonction
 

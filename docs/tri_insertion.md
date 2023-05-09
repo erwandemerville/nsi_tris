@@ -161,12 +161,18 @@ On rappelle le **principe** du **tri par insertion** :
 On insère donc à la **n<sup>ième</sup> itération** le **n<sup>ième</sup> élément** à sa **bonne position** en décalant à droite tous les éléments de la **partie triée** du tableau qui lui sont supérieurs.
 
 !!! note "Exercice - Trier un tableau"
+
+    On souhaite trier le tableau suivant avec le **tri par insertion** : `[5, 3, 1, 4, 6, 2]`.  
+    Indiquez quel est l'**état du tableau** après chaque **insertion d'élément**.
+
     <figure markdown>
     <center>
     ![Tableau exercice tri insertion](images/exo_tri_insertion.png)
     <figcaption>Source : [http://fractale.gecif.net/nsi/pdf/cours/algorithmes/algo_tri.pdf](http://fractale.gecif.net/nsi/pdf/cours/algorithmes/algo_tri.pdf){ target="_blank" }</figcaption>
     </center>
     </figure>
+
+    Faites de même avec le tableau `[2,8,1,5,2,3]`.
     
 
 ## L'algorithme
@@ -176,24 +182,40 @@ On insère donc à la **n<sup>ième</sup> itération** le **n<sup>ième</sup> é
 !!! info "Note"
     Dans la partie précédente, on a souvent parlé de "déplacements" de cartes. En machine, ces déplacements seront implémentés sous la forme de **copies d'éléments**, en réalisant des affectations.
 
-!!! abstract "Algorithme de recherche du minimum"
+!!! abstract "Algorithme du tri par insertion"
+    <div style="font-size:1.1em">
     **ALGORITHME** : tri_insertion  
-    **ENTRÉES** :  
-    &nbsp;&nbsp;&nbsp;&nbsp;`tableau` : un **tableau** d'éléments
+    **ENTRÉE** :  
+    &emsp;&emsp;`tableau` : un **tableau** d'éléments  
     **SORTIE** : aucune (tri en place)
 
     **DÉBUT**  
     &emsp;&emsp;**POUR** i **ALLANT DE** 1 **À** longueur(tableau) - 1  
     &emsp;&emsp;&emsp;&emsp;valeur_courante ← tableau[i]  
-    &emsp;&emsp;&emsp;&emsp;j ← i - 1  
-    &emsp;&emsp;&emsp;**SI** tableau[i] < tableau[indice_min], **ALORS**  
-    &emsp;&emsp;&emsp;&emsp;indice_min ← i  
+    &emsp;&emsp;&emsp;&emsp;j ← i $-$ 1  
+    &emsp;&emsp;&emsp;&emsp;**TANT QUE** j ≥ 0 **ET QUE** tableau[j] > valeur_courante  
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;tableau[j + 1] ← tableau[j]  
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;j ← j $-$ 1  
+    &emsp;&emsp;&emsp;&emsp;**FIN TANT QUE**  
+    &emsp;&emsp;&emsp;&emsp;tableau[j + 1] ← valeur_courante  
     &emsp;&emsp;**FIN POUR**  
-    &emsp;&emsp;Renvoyer indice_min  
+    &emsp;&emsp;Renvoyer **∅**  
     **FIN ALGORITHME**
+    </div>
+
+!!! note "Exercice 1"
+    **Déroulez** l'algorithme sur le tableau `[5, 3, 1, 4, 6, 2]`.
+
+!!! note "Exercice 2"
+    1. Pourquoi commence t-on la boucle **POUR** à partir de **1** ?
+    2. **Expliquez** à quoi sert la 3<sup>ème</sup> **ligne** de l'**algorithme** : `j ← i - 1`.
+    3. Dans le **TANT QUE**, à quoi sert la première condition `j ≥ 0` ? La deuxième condition `tableau[j] > valeur_courante` ? Pourrait t-on inverser les deux conditions ?
+    4. À quoi sert la ligne `tableau[j + 1] ← tableau[j] ` dans le **TANT QUE** ?
+    5. Pourquoi **décrémente t-on** (c'est-à-dire que l'on diminue de 1) la valeur de `j` à chaque tour de la boucle **TANT QUE** ?
+    6. Expliquez l'**affectation** `tableau[j + 1] ← valeur_courante ` après la boucle **TANT QUE**.
 
 !!! info "Tri stable"
-    Le **tri par insertion** est dit "**stable**" car, en cas de **valeurs identiques** dans le tableau initial, leur **ordre** relatif n’est **pas modifié**.
+    Le **tri par insertion**, écrit comme ci-dessus, est dit "**stable**" car, en cas de **valeurs identiques** dans le tableau initial, leur **ordre** relatif n’est **pas modifié**.
 
 ### Une petite animation
 

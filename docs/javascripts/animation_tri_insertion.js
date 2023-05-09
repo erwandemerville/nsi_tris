@@ -2,7 +2,7 @@ const array = [5, 3, 1, 6, 4, 7, 2];
 const arrayEl = document.getElementById("array-trii");
 const memoryValueEl = document.getElementById("memory-value");
 const startSortButton = document.getElementById("start-sort");
-const attente = 3000;
+// const attente = 3000;
 memoryValueEl.value = "";
 
 function createArrayElements(arr) {
