@@ -639,6 +639,13 @@ Démontrons maintenant la **conservation**.
 !!! note "Question 3 : Conservation"
     Montrer que l'implication $P_k \implies P_{k+1}$ est **vraie**.
 
+??? tip "Astuces question 3"
+    Vous pouvez procéder comme suit :
+
+    - Définir l'**état du système** à la **fin de l'itération** $k$ de la **boucle principal**, notamment **le nombre d'éléments triés** (et l'intervalle correspondant) et le **contenu de la variable** `debut`.
+    - Supposer que la proposition $P_k$ est vraie. Détailler ce qu'il se passe lorsque l'on refait un **tour de boucle**.
+    - En déduire l'**état du système** à l'issue de l'itération $k + 1$ de la **boucle principale**.
+
 Rappelons notre invariant $P_k$ : « après $k$ tours de boucle, $k$ **éléments sont triés dans le sous-tableau** $[0, k-1]$ **de gauche** » et que :
 
 - dans la phase d'**<u>initialisation</u>**, on a montré que l'**invariant** $P_0$ était **vrai avant la première itération** de la **boucle POUR principale**,
