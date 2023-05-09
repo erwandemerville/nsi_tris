@@ -716,7 +716,34 @@ Indiquez quel est l'<strong>état du tableau</strong> après chaque <strong>inse
 </div></p>
 </div>
 <h2 id="implementation-en-python">Implémentation en Python</h2>
-<p>...</p>
+<p>Maintenant que l'on a déterminé l'<strong>algorithme</strong> du <strong>tri par insertion</strong>, on peut l'<strong>implémenter en Python</strong>.</p>
+<p><strong>Téléchargez</strong> le programme squelette (à compléter) ci-dessous.</p>
+<div class="admonition success">
+<p class="admonition-title"><span id="fichiers_python">Fichiers Python</span></p>
+<ul>
+<li><a href="../src/tri_insertion.py" target="_blank">tri_insertion.py</a> : programme <strong>Python</strong> avec les fonctions à compléter.</li>
+<li>(à venir) : programme <strong>Python</strong> corrigé.</li>
+</ul>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Module <em>doctest</em></p>
+<p>Dans la <strong>docstring</strong> de la fonction <code>tri_insertion</code>, des <strong>tests</strong> sont présents. Ces tests sont exécutés par le module natif <em>doctest</em>. Lorsque vous <strong>exécutez</strong> le programme, si les tests réussissent, <strong>rien ne se passera</strong>. Sinon, vous obtiendrez des informations sur les tests qui ont échoué.</p>
+<p>La fonction <code>testmod</code> (qui exécute les <strong>tests</strong>) est appelée dans la <strong>dernière ligne</strong> du programme. Pour obtenir davantage d'informations sur les erreurs liées aux tests, vous pouvez activer le mode <em>verbeux</em> en remplaçant le paramètre <code>verbose=False</code> par <code>verbose=True</code>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Exercice préliminaire</p>
+<p>Dans les <strong>tests</strong> présents dans la docstring de la fonction <code>tri_insertion</code>, la première instruction est la suivante :<br />
+<code>&gt;&gt;&gt; l = [randint(0, 99) for _ in range(10)]</code><br />
+<strong>Expliquez</strong> ce que fait cette instruction.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Exercice 1</p>
+<p><strong>Écrivez</strong> la fonction <code>tri_insertion</code>. Exécutez le programme pour vous assurer que votre fonction soit correcte (il ne doit rien se passer).</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Exercice 2</p>
+<p><strong>Écrivez</strong> la fonction <code>tri_insertion_decroissant</code> permettant de <strong>trier un tableau dans l'ordre décroissant</strong>. Que faut-il changer par rapport à la fonction <code>tri_insertion</code> ?</p>
+</div>
 
 
 
