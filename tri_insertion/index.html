@@ -1,0 +1,811 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://erwandemerville.github.io/nsi_tris/tri_insertion/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
+    
+    
+      
+        <title>Tri par insertion - NSI première - Algos de tri</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.975780f9.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.2505c338.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../stylesheets/style_animation_tri_selection.css">
+    
+      <link rel="stylesheet" href="../stylesheets/style_animation_tri_insertion.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="None" data-md-color-accent="None">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#le-tri-par-insertion" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="NSI première - Algos de tri" class="md-header__button md-logo" aria-label="NSI première - Algos de tri" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            NSI première - Algos de tri
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tri par insertion
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="NSI première - Algos de tri" class="md-nav__button md-logo" aria-label="NSI première - Algos de tri" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    NSI première - Algos de tri
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          Cours
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Cours" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Cours
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tri_selection/" class="md-nav__link">
+        Tri par sélection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Tri par insertion
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Tri par insertion
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="Sur cette page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Sur cette page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#presentation-du-tri-par-insertion" class="md-nav__link">
+    Présentation du tri par insertion
+  </a>
+  
+    <nav class="md-nav" aria-label="Présentation du tri par insertion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#avec-un-jeu-de-cartes" class="md-nav__link">
+    Avec un jeu de cartes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trier-un-tableau" class="md-nav__link">
+    Trier un tableau
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lalgorithme" class="md-nav__link">
+    L'algorithme
+  </a>
+  
+    <nav class="md-nav" aria-label="L'algorithme">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#presentation-de-lalgorithme" class="md-nav__link">
+    Présentation de l'algorithme
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#une-petite-animation" class="md-nav__link">
+    Une petite animation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-en-python" class="md-nav__link">
+    Implémentation en Python
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Évaluations
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Évaluations" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Évaluations
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pdf/evaluation_tri_selection.pdf" class="md-nav__link">
+        Interro tri par sélection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pdf/evaluation_tri_selection_correction.pdf" class="md-nav__link">
+        Correction interro tri sélection
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="Sur cette page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Sur cette page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#presentation-du-tri-par-insertion" class="md-nav__link">
+    Présentation du tri par insertion
+  </a>
+  
+    <nav class="md-nav" aria-label="Présentation du tri par insertion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#avec-un-jeu-de-cartes" class="md-nav__link">
+    Avec un jeu de cartes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trier-un-tableau" class="md-nav__link">
+    Trier un tableau
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lalgorithme" class="md-nav__link">
+    L'algorithme
+  </a>
+  
+    <nav class="md-nav" aria-label="L'algorithme">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#presentation-de-lalgorithme" class="md-nav__link">
+    Présentation de l'algorithme
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#une-petite-animation" class="md-nav__link">
+    Une petite animation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-en-python" class="md-nav__link">
+    Implémentation en Python
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="le-tri-par-insertion">Le tri par insertion</h1>
+<p>Nous avons vu la méthode de <strong>tri par sélection</strong>, qui a l'avantage d'être facile à appréhender, mais qui s'avère être fortement coûteuse (coût <strong>quadratique</strong> dans <strong>tous les cas</strong>).<br />
+Voyons s'il n'existe pas d'autres algorithmes de tri plus intéressants.</p>
+<h2 id="presentation-du-tri-par-insertion">Présentation du tri par insertion</h2>
+<h3 id="avec-un-jeu-de-cartes">Avec un jeu de cartes</h3>
+<p>Le <strong>tri par insertion</strong> est un autre algorithme de tri par <strong>comparaisons</strong>, dont le principe est un peu différent, mais plus "naturel".</p>
+<p>Dans cette partie, on verra comment trier une <strong>suite de cartes</strong> en utilisant la méthode de <strong>tri par insertion</strong>. On utilisera l'<strong>ordre</strong> suivant (de la carte la plus <em>faible</em> à la plus <em>forte</em>) :</p>
+<p><img alt="Ordre des cartes" src="../images/ordre_cartes.png" /></p>
+<p><em>Note</em> : Si vous avez une carte <em>Joker</em> dans votre jeu, on considèrera qu'elle est plus forte que toutes les autres cartes.</p>
+<div class="admonition success">
+<p class="admonition-title">Activité préliminaire</p>
+<p>Munissez-vous d'un paquet de carte, <strong>mélangez-le</strong>, et placez-le en <strong>face cachée</strong>.<br />
+Vous disposez d'une <strong>zone de jeu</strong> dans laquelle vous ajouterez les cartes <strong>une par une</strong>, de manière à <strong>toujours</strong> avoir une <strong>suite de cartes triée</strong>.<br />
+L'objectif est de <strong>trier les 7 premières cartes</strong> du paquet.</p>
+<ul>
+<li>Prenez la <strong>première carte</strong> du paquet et posez-la (face visible) dans votre zone de jeu.<br />
+La suite de cartes de votre zone de jeu (composée pour le moment d'une seule carte) est-elle triée ?</li>
+<li>Prenez la <strong>deuxième carte</strong> du paquet, et intégrez-la à votre <strong>suite de cartes</strong> de manière à ce que celle-ci <strong>reste triée</strong>.</li>
+<li>Prenez la <strong>troisième carte</strong> du paquet et faites de même. Répétez cela jusqu'à avoir une <strong>suite</strong> de <strong>7 cartes triées</strong> dans votre zone de jeu.</li>
+</ul>
+<p><strong>Question</strong> : <strong>Décrivez la méthode</strong> que vous avez suivi pour intégrer chaque nouvelle carte à votre suite de cartes triée.</p>
+</div>
+<hr />
+<p>Voici le <strong>déroulement</strong> de la <strong>méthode de tri par insertion</strong> sur une <strong>suite de cartes</strong>.<br />
+On souhaite trier la suite de cartes suivantes :</p>
+<figure>
+<p><center>
+<img alt="Suite de 5 cartes" src="../images/cartes_insertion/01.png" width="80%" /></p>
+<figcaption>Une suite de 5 cartes.</figcaption>
+<p></center></p>
+</figure>
+<div class="admonition info">
+<p class="admonition-title">Composition du tableau</p>
+<p>On distingue <strong>deux parties</strong> dans le tableau :</p>
+<ul>
+<li>une <strong>partie triée</strong> (en <span style="color:green">vert</span>), initialement composée <strong>de la première carte</strong>.</li>
+<li>une <strong>partie non-triée</strong> (en <span style="color:gray">gris</span>), initialement composée du <strong>reste des cartes</strong>.</li>
+</ul>
+<p>On dispose également d'une <strong>zone mémoire</strong> dans laquelle peut <strong>placer une carte temporairement</strong>.</p>
+</div>
+<p><center>
+<img alt="Suite de 5 cartes" src="../images/cartes_insertion/02.png" width="60%" />
+</center></p>
+<p>On commence donc par traiter la <strong>deuxième carte du tableau</strong>, qui est la <strong>première carte</strong> de la <strong>partie non-triée</strong>. On place cette carte dans la zone <strong>mémoire</strong>.</p>
+<p><center>
+<img alt="Suite de 5 cartes" src="../images/cartes_insertion/02b.png" width="60%" />
+</center></p>
+<p>Ensuite, on procède comme suit :</p>
+<div class="admonition tip">
+<p class="admonition-title">Placer la carte à sa bonne position</p>
+<ul>
+<li>En partant de la carte positionnée <strong>juste à gauche</strong> de celle que l'on cherche à trier (c'est-à-dire la dernière carte de la <strong>partie triée</strong> du tableau), et en allant jusqu'à la <strong>première carte</strong> du tableau :<ul>
+<li>On <strong>décale d'une position à droite chaque carte</strong> dont la <strong>valeur</strong> est <strong>strictement supérieure</strong> à la carte que l'on cherche à replacer.</li>
+<li>On s'arrête <strong>uniquement</strong> si la <strong>carte</strong> n'a <strong>pas</strong> une valeur <strong>supérieure</strong>, ou si l'on a parcouru <strong>toutes les cartes</strong>.</li>
+</ul>
+</li>
+<li>On <strong>replace</strong> la <strong>carte</strong> (actuellement en <em>mémoire</em>) à <strong>sa bonne position</strong>.</li>
+</ul>
+</div>
+<p>Ici, la carte qui précède celle à replacer (qui se trouve en mémoire) est <strong>inférieure</strong> à la carte à replacer. Cela signifie que notre carte est <strong>déjà à sa bonne position</strong>.</p>
+<p>Il n'y a donc <strong>pas de décalage à faire</strong>, et on <strong>replace</strong> la <strong>carte</strong> à sa <strong>position initiale</strong>.</p>
+<p><center>
+<img alt="Suite de 5 cartes" src="../images/cartes_insertion/02c.png" width="60%" />
+</center></p>
+<p>La <strong>partie triée</strong> de notre tableau est maintenant composée des <strong>deux premières cartes</strong>.</p>
+<p><center>
+<img alt="Suite de 5 cartes" src="../images/cartes_insertion/03.png" width="60%" />
+</center></p>
+<p>On fait de même avec la <strong>troisième carte</strong> du tableau (première carte de la <strong>partie non-triée</strong>).</p>
+<p><center>
+<img alt="Suite de 5 cartes" src="../images/cartes_insertion/03b.png" width="60%" />
+</center></p>
+<p>Ici encore, la carte était déjà à sa bonne position.</p>
+<p><center>
+<img alt="Suite de 5 cartes" src="../images/cartes_insertion/03c.png" width="60%" />
+</center></p>
+<p>On a maintenant <strong>3 cartes</strong> dans la <strong>partie triée</strong> du tableau.<br />
+On met la <strong>quatrième carte</strong> (de <em>valeur 3</em>) en <strong>mémoire</strong>.</p>
+<p><center>
+<img alt="Suite de 5 cartes" src="../images/cartes_insertion/05.png" width="60%" />
+</center></p>
+<p>On constate que les <strong>deux cartes précédentes</strong> (de <em>valeurs 8</em> et <em>4</em>) ont une valeur <strong>supérieure</strong> à celle de la carte que l'on souhaite trier. Il faut donc <strong>déplacer à droite</strong> ces deux cartes.</p>
+<p><center>
+<img alt="Suite de 5 cartes" src="../images/cartes_insertion/06.png" width="60%" />
+</center></p>
+<p><center>
+<img alt="Suite de 5 cartes" src="../images/cartes_insertion/07.png" width="60%" />
+</center></p>
+<p>On peut maintenant <strong>repositionner</strong> notre carte.</p>
+<p><center>
+<img alt="Suite de 5 cartes" src="../images/cartes_insertion/08.png" width="60%" />
+</center></p>
+<p><center>
+<img alt="Suite de 5 cartes" src="../images/cartes_insertion/09.png" width="60%" />
+</center></p>
+<p>Il ne reste ainsi <strong>plus qu'une seule carte</strong> dans la <strong>partie non-triée</strong> de notre tableau.</p>
+<p>On répète le même principe, on place cette <strong>carte</strong> en <strong>mémoire</strong>.</p>
+<p><center>
+<img alt="Suite de 5 cartes" src="../images/cartes_insertion/10.png" width="60%" />
+</center></p>
+<p>Ici, il n'y a que la <strong>carte précédente</strong> à déplacer.</p>
+<p><center>
+<img alt="Suite de 5 cartes" src="../images/cartes_insertion/11.png" width="60%" />
+</center></p>
+<p>Puis on repositionne notre carte.</p>
+<p><center>
+<img alt="Suite de 5 cartes" src="../images/cartes_insertion/12.png" width="60%" />
+</center></p>
+<p>Et voilà, on vient de <strong>trier</strong> une <strong>suite de 5 cartes</strong> par la <strong>méthode de tri par insertion</strong> !</p>
+<div class="admonition note">
+<p class="admonition-title">À vous de jouer</p>
+<p>Disposez une <strong>suite de 7 cartes</strong> choisies <strong>au hasard</strong> dans un paquet de cartes.<br />
+Votre <strong>zone de jeu</strong> est composée de votre <strong>suite de cartes</strong> et d'un <strong>emplacement mémoire</strong>.<br />
+Effectuez le tri de votre suite de cartes en utilisant la méthode de <strong>tri par insertion</strong> présentée ci-dessus.</p>
+</div>
+<h3 id="trier-un-tableau">Trier un tableau</h3>
+<p>On a donc vu que la méthode de <strong>tri par insertion</strong> avait l'avantage d'être assez <strong>naturelle</strong>, raison pour laquelle elle est souvent utilisée pour trier des <strong>cartes à jouer</strong>.</p>
+<p>Appliquons à présent ce <strong>tri</strong> sur des <strong>tableaux d'entiers</strong>.</p>
+<p>On rappelle le <strong>principe</strong> du <strong>tri par insertion</strong> :</p>
+<ul>
+<li>on fait comme si les <strong>éléments</strong> de la <strong>partie non-triée</strong> du tableau étaient donnés <strong>un par un</strong>, le <strong>premier élément du tableau</strong> constituant, <strong>à lui seul</strong>, un <strong>tableau triée</strong> de <em>longueur 1</em>,</li>
+<li>on y <strong>range</strong> ensuite le <strong>deuxième élément du tableau</strong> pour constituer un <strong>tableau trié</strong> de <em>longueur 2</em>,</li>
+<li>puis on y range le <strong>troisième élément</strong> pour obtenir un <strong>tableau trié</strong> <em>longueur 3</em>,</li>
+<li>et ainsi de suite jusqu’à avoir traité le dernier élément...</li>
+</ul>
+<p>On insère donc à la <strong>n<sup>ième</sup> itération</strong> le <strong>n<sup>ième</sup> élément</strong> à sa <strong>bonne position</strong> en décalant à droite tous les éléments de la <strong>partie triée</strong> du tableau qui lui sont supérieurs.</p>
+<div class="admonition note">
+<p class="admonition-title">Exercice - Trier un tableau</p>
+<p>On souhaite trier le tableau suivant avec le <strong>tri par insertion</strong> : <code>[5, 3, 1, 4, 6, 2]</code>.<br />
+Indiquez quel est l'<strong>état du tableau</strong> après chaque <strong>insertion d'élément</strong>.</p>
+<p><figure markdown>
+<center>
+<img alt="Tableau exercice tri insertion" src="../images/exo_tri_insertion.png" />
+<figcaption>Source : <a href="http://fractale.gecif.net/nsi/pdf/cours/algorithmes/algo_tri.pdf" target="_blank">http://fractale.gecif.net/nsi/pdf/cours/algorithmes/algo_tri.pdf</a></figcaption>
+</center>
+</figure></p>
+<p>Faites de même avec le tableau <code>[2,8,1,5,2,3]</code>.</p>
+</div>
+<h2 id="lalgorithme">L'algorithme</h2>
+<h3 id="presentation-de-lalgorithme">Présentation de l'algorithme</h3>
+<div class="admonition info">
+<p class="admonition-title">Note</p>
+<p>Dans la partie précédente, on a souvent parlé de "déplacements" de cartes. En machine, ces déplacements seront implémentés sous la forme de <strong>copies d'éléments</strong>, en réalisant des affectations.</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Algorithme du tri par insertion</p>
+<p><div style="font-size:1.1em">
+<strong>ALGORITHME</strong> : tri_insertion<br />
+<strong>ENTRÉE</strong> :<br />
+&emsp;&emsp;<code>tableau</code> : un <strong>tableau</strong> d'éléments<br />
+<strong>SORTIE</strong> : aucune (tri en place)</p>
+<p><strong>DÉBUT</strong><br />
+&emsp;&emsp;<strong>POUR</strong> i <strong>ALLANT DE</strong> 1 <strong>À</strong> longueur(tableau) - 1<br />
+&emsp;&emsp;&emsp;&emsp;valeur_courante ← tableau[i]<br />
+&emsp;&emsp;&emsp;&emsp;j ← i <span class="arithmatex">\(-\)</span> 1<br />
+&emsp;&emsp;&emsp;&emsp;<strong>TANT QUE</strong> j ≥ 0 <strong>ET QUE</strong> tableau[j] &gt; valeur_courante<br />
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;tableau[j + 1] ← tableau[j]<br />
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;j ← j <span class="arithmatex">\(-\)</span> 1<br />
+&emsp;&emsp;&emsp;&emsp;<strong>FIN TANT QUE</strong><br />
+&emsp;&emsp;&emsp;&emsp;tableau[j + 1] ← valeur_courante<br />
+&emsp;&emsp;<strong>FIN POUR</strong><br />
+&emsp;&emsp;Renvoyer <strong>∅</strong><br />
+<strong>FIN ALGORITHME</strong>
+</div></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Exercice 1</p>
+<p><strong>Déroulez</strong> l'algorithme sur le tableau <code>[5, 3, 1, 4, 6, 2]</code>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Exercice 2</p>
+<ol>
+<li>Pourquoi commence t-on la boucle <strong>POUR</strong> à partir de <strong>1</strong> ?</li>
+<li><strong>Expliquez</strong> à quoi sert la 3<sup>ème</sup> <strong>ligne</strong> de l'<strong>algorithme</strong> : <code>j ← i - 1</code>.</li>
+<li>Dans le <strong>TANT QUE</strong>, à quoi sert la première condition <code>j ≥ 0</code> ? La deuxième condition <code>tableau[j] &gt; valeur_courante</code> ? Pourrait t-on inverser les deux conditions ?</li>
+<li>À quoi sert la ligne <code>tableau[j + 1] ← tableau[j]</code> dans le <strong>TANT QUE</strong> ?</li>
+<li>Pourquoi <strong>décrémente t-on</strong> (c'est-à-dire que l'on diminue de 1) la valeur de <code>j</code> à chaque tour de la boucle <strong>TANT QUE</strong> ?</li>
+<li>Expliquez l'<strong>affectation</strong> <code>tableau[j + 1] ← valeur_courante</code> après la boucle <strong>TANT QUE</strong>.</li>
+</ol>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Tri stable</p>
+<p>Le <strong>tri par insertion</strong>, écrit comme ci-dessus, est dit "<strong>stable</strong>" car, en cas de <strong>valeurs identiques</strong> dans le tableau initial, leur <strong>ordre</strong> relatif n’est <strong>pas modifié</strong>.</p>
+</div>
+<h3 id="une-petite-animation">Une petite animation</h3>
+<div class="admonition success">
+<p class="admonition-title">Simulation du tri par insertion</p>
+<p><span style="color:green">En vert</span> : éléments déjà triés<br />
+<span style="color:#a3a3a3">En gris</span> : éléments à trier
+<div class="container-trii">
+    <div class="array-trii-wrapper">
+        <ul id="array-trii"></ul>
+    </div>
+    <div class="memory">
+        <label for="memory-value">Espace mémoire:</label>
+        <input id="memory-value" type="text" readonly>
+    </div>
+    <div class="buttons-trii">
+        <button id="start-sort" class="md-button">Lancer le tri</button>
+        <button id="step-sort" class="md-button">Pas à pas</button>
+    </div>      <br />
+</div></p>
+</div>
+<h2 id="implementation-en-python">Implémentation en Python</h2>
+<p>...</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../tri_selection/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Tri par sélection" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Tri par sélection
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../pdf/evaluation_tri_selection.pdf" class="md-footer__link md-footer__link--next" aria-label="Next: Interro tri par sélection" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Interro tri par sélection
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.sections"], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="../javascripts/animation_tri_selection.js"></script>
+      
+        <script src="../javascripts/animation_tri_insertion.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+    
+  </body>
+</html>
