@@ -1207,6 +1207,15 @@ Après <span class="arithmatex">\(k\)</span> tours de boucle, le <strong>sous-ta
 <p class="admonition-title">Question 3 : Conservation</p>
 <p>Montrer que l'implication <span class="arithmatex">\(P_k \implies P_{k+1}\)</span> est <strong>vraie</strong>.</p>
 </div>
+<details class="tip">
+<summary>Astuces question 3</summary>
+<p>Vous pouvez procéder comme suit :</p>
+<ul>
+<li>Définir l'<strong>état du système</strong> à la <strong>fin de l'itération</strong> <span class="arithmatex">\(k\)</span> de la <strong>boucle principal</strong>, notamment <strong>le nombre d'éléments triés</strong> (et l'intervalle correspondant) et le <strong>contenu de la variable</strong> <code>debut</code>.</li>
+<li>Supposer que la proposition <span class="arithmatex">\(P_k\)</span> est vraie. Détailler ce qu'il se passe lorsque l'on refait un <strong>tour de boucle</strong>.</li>
+<li>En déduire l'<strong>état du système</strong> à l'issue de l'itération <span class="arithmatex">\(k + 1\)</span> de la <strong>boucle principale</strong>.</li>
+</ul>
+</details>
 <p>Rappelons notre invariant <span class="arithmatex">\(P_k\)</span> : « après <span class="arithmatex">\(k\)</span> tours de boucle, <span class="arithmatex">\(k\)</span> <strong>éléments sont triés dans le sous-tableau</strong> <span class="arithmatex">\([0, k-1]\)</span> <strong>de gauche</strong> » et que :</p>
 <ul>
 <li>dans la phase d'<strong><u>initialisation</u></strong>, on a montré que l'<strong>invariant</strong> <span class="arithmatex">\(P_0\)</span> était <strong>vrai avant la première itération</strong> de la <strong>boucle POUR principale</strong>,</li>
