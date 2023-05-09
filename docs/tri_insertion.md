@@ -238,4 +238,26 @@ On insère donc à la **n<sup>ième</sup> itération** le **n<sup>ième</sup> é
 
 ## Implémentation en Python
 
-...
+Maintenant que l'on a déterminé l'**algorithme** du **tri par insertion**, on peut l'**implémenter en Python**.
+
+**Téléchargez** le programme squelette (à compléter) ci-dessous.
+
+!!! success "<span id="fichiers_python">Fichiers Python</span>"
+    - [tri_insertion.py](src/tri_insertion.py){ target="_blank" } : programme **Python** avec les fonctions à compléter.
+    - (à venir) : programme **Python** corrigé.
+
+!!! tip "Module *doctest*"
+    Dans la **docstring** de la fonction `tri_insertion`, des **tests** sont présents. Ces tests sont exécutés par le module natif *doctest*. Lorsque vous **exécutez** le programme, si les tests réussissent, **rien ne se passera**. Sinon, vous obtiendrez des informations sur les tests qui ont échoué.
+
+    La fonction `testmod` (qui exécute les **tests**) est appelée dans la **dernière ligne** du programme. Pour obtenir davantage d'informations sur les erreurs liées aux tests, vous pouvez activer le mode *verbeux* en remplaçant le paramètre `verbose=False` par `verbose=True`.
+
+!!! note "Exercice préliminaire"
+    Dans les **tests** présents dans la docstring de la fonction `tri_insertion`, la première instruction est la suivante :  
+    `>>> l = [randint(0, 99) for _ in range(10)]`  
+    **Expliquez** ce que fait cette instruction.
+
+!!! note "Exercice 1"
+    **Écrivez** la fonction `tri_insertion`. Exécutez le programme pour vous assurer que votre fonction soit correcte (il ne doit rien se passer).
+
+!!! note "Exercice 2"
+    **Écrivez** la fonction `tri_insertion_decroissant` permettant de **trier un tableau dans l'ordre décroissant**. Que faut-il changer par rapport à la fonction `tri_insertion` ?
