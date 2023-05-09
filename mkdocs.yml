@@ -8,6 +8,9 @@ nav:
   - Cours:
     - Tri par sélection: tri_selection.md
     - Tri par insertion: tri_insertion.md
+  - Évaluations:
+    - Interro tri par sélection: pdf/evaluation_tri_selection.pdf
+    - Correction interro tri sélection: pdf/evaluation_tri_selection_correction.pdf
 
 markdown_extensions:
   - pymdownx.arithmatex:
@@ -27,10 +30,12 @@ markdown_extensions:
 extra_css:
   - stylesheets/extra.css
   - stylesheets/style_animation_tri_selection.css
+  - stylesheets/style_animation_tri_insertion.css
 
 extra_javascript:
   - javascripts/mathjax.js
   - javascripts/animation_tri_selection.js
+  - javascripts/animation_tri_insertion.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
