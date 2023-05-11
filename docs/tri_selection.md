@@ -515,13 +515,48 @@ On rappelle l'algorithme du **tri par sélection** et de **recherche du minimum*
         &emsp;&emsp;Renvoyer indice_min  
         **FIN ALGORITHME**
 
-???+ tip "Astuce question 1"
+??? tip "Astuce question 1"
     La démarche à suivre est similaire à celle de l'exemple précédent.
 
     - Ré-écrire la boucle **POUR** sous la forme d'une boucle **TANT QUE**.
     - Exprimer $i$ en fonction du nombre de tours de boucle $n$ sous la forme d'une **suite entière arithmétique** croissante ($i_n = i_0 + r*n$ où $i_0$ est le **terme initial** et $r$ est la **raison**).
     - Écrire la condition du **TANT QUE** en partant de l'inégalité de départ et de l'expression de $i_n$, et tenter d'obtenir une nouvelle inégalité de la forme $v_n > 0$, où $v_n$ est une **suite d'entiers strictement décroissante**.
     - On a trouvé un **variant** $v_n$ : La boucle se termine !
+
+???+ tip "Réponse question 1"
+    Pour montrer la **terminaison** de cet algorithme, il faut **prouver la terminaison de la boucle POUR**.
+
+    On réécrit la boucle **POUR** sous la forme d'une boucle **WHILE** :
+
+    ---
+    i = debut + 1  
+    **TANT QUE** i < longueur(tableau):  
+    &emsp;&emsp;(instructions qui ne modifient pas la valeur de i)  
+    &emsp;&emsp;i = i + 1
+    ---
+
+    Exprimons $i$ sous la forme d'une **suite arithmétique** en fonction de $n$, $n$ étant **le nombre de tours de boucles effectué**. Avant de rentrer dans la boucle, $n$ vaut $0$.
+
+    $i_n = i_0 + rn$ avec $r$ la **raison de la suite arithmétique**, qui correspond au **pas** de la boucle. Après chaque itération, on **incrémente** $i$ de **1**, donc $r = 1$.    
+    Donc $i_n = debut + 1 + 1*n$,  
+    $i_n = debut + 1 + n$.
+
+    Donc, si l'on réécrit le **TANT QUE** :
+
+    ---
+    **TANT QUE** i<sub>n</sub> < longueur(tableau)  
+    **TANT QUE** debut + 1 + n < longueur(tableau)  
+    En réécrivant sous la forme **TANT QUE** <span style="color:blue">VARIANT</span> > 0 :  
+    **TANT QUE** 0 < longueur(tableau) - debut - 1 - n  
+    **TANT QUE** longueur(tableau) - debut - 1 - n > 0
+    ---
+
+    On obtient une **nouvelle suite arithmétique**, qu'on notera $v_n$, telle que :  
+    $v_n = v_0 + rn$ avec $v_0$ = $longueur(tableau) - debut - 1$ et $r = -1$.
+
+    $v_0$ étant un **entier positif** (car $longueur(tableau) - debut - 1$ vaut toujours au minimum **1**), et la **raison** étant **négative** (ce qui indique que la **suite est strictement décroissante**), on peut donc dire que $v_n$ est bien un **variant de la boucle** et que notre boucle **se termine**.
+
+    On a prouvé la terminaison de la seule boucle de l'algorithme, on peut donc en conclure que `minimum` **se termine**.
 
 !!! note "Question 2"
     Montrer enfin la terminaison de l'algorithme du **tri par sélection**.
@@ -541,10 +576,46 @@ On rappelle l'algorithme du **tri par sélection** et de **recherche du minimum*
         &emsp;&emsp;Renvoyer **∅**  
         **FIN ALGORITHME**
 
-???+ tip "Astuce question 2"
+??? tip "Astuce question 2"
     - On a montré que `minimum`se termine,
     - la fonction `echanger` se termine (car il s'agit simplement de trois affectations),
     - il ne reste plus qu'à montrer que la **boucle principale** se termine, avec la même démarche que précédemment.
+
+???+ tip "Réponse question 2"
+    On a précédemment montré que `minimum` se terminait, et l'algorithme `echanger` se termine également (car il s'agit simplement de **trois affectations**), il reste donc à démontrer que la **boucle POUR principale** de `tri_selection` se termine. Le principe est le même que précédemment.
+
+    On réécrit la boucle **POUR** sous la forme d'une boucle **WHILE**.  
+    **ATTENTION** : Il y a une variable nommée `n` dans l'algorithme qui correspond à **la longueur du tableau**. Pour ne pas mélanger la longueur du tableau avec **le nombre de tours de boucle** effectué (que l'on note également $n$), on remplacera le `n` de l'algorithme par `longueur(tableau)`.
+
+    ---
+    debut = 0  
+    **TANT QUE** debut < longueur(tableau) - 1:  
+    &emsp;&emsp;(instructions qui ne modifient pas la valeur de debut)  
+    &emsp;&emsp;debut = debut + 1
+    ---
+
+    Exprimons $debut$ sous la forme d'une **suite arithmétique** en fonction de $n$, $n$ étant **le nombre de tours de boucles effectué**. Avant de rentrer dans la boucle, $n$ vaut $0$.
+
+    $debut_n = debut_0 + rn$ avec $r$ la **raison de la suite arithmétique**, qui correspond au **pas** de la boucle. Après chaque itération, on **incrémente** $debut$ de **1**, donc $r = 1$.    
+    Donc $debut_n = 0 + 1*n$,  
+    $debut_n = n$.
+
+    Donc, si l'on réécrit le **TANT QUE** :
+
+    ---
+    **TANT QUE** debut<sub>n</sub> < longueur(tableau) - 1  
+    **TANT QUE** n < longueur(tableau) - 1  
+    En réécrivant sous la forme **TANT QUE** <span style="color:blue">VARIANT</span> > 0 :  
+    **TANT QUE** longueur(tableau) - 1 - n > 0
+    ---
+
+    On obtient une **nouvelle suite arithmétique**, qu'on notera $v_n$, telle que :  
+    $v_n = v_0 + rn$ avec $v_0$ = $longueur(tableau) - 1$ et $r = -1$.
+
+    $v_0$ étant un **entier positif** (car on ne rentre dans la boucle que si $longueur(tableau) - 1$ vaut au moins **1**), et la **raison** étant **négative** (ce qui indique que la **suite est strictement décroissante**), on peut donc dire que $v_n$ est bien un **variant de la boucle** et que notre boucle **se termine**.
+
+    On a prouvé la terminaison de notre boucle, on peut donc en déduire que `tri_selection` **se termine**.
+
 
 ## Preuve de correction du tri par sélection
 
