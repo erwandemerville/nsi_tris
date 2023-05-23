@@ -261,3 +261,13 @@ Maintenant que l'on a déterminé l'**algorithme** du **tri par insertion**, on 
 
 !!! note "Exercice 2"
     **Écrivez** la fonction `tri_insertion_decroissant` permettant de **trier un tableau dans l'ordre décroissant**. Que faut-il changer par rapport à la fonction `tri_insertion` ?
+
+## Coût de l'algorithme
+
+Comme pour le tri par sélection, on analysera le **coût algorithmique** du **tri par insertion** en comptant le **nombre de comparaisons** effectuées entre deux éléments du tableau.
+
+!!! success "<span id="fichiers_python">Fichier Python</span>"
+    - [tri_insertion_comp.py](src/tri_insertion_comp.py{ target="_blank" } : programme **Python** permettant de visualiser les comparaisons effectuées.
+
+!!! note "Exercice 1"
+    Téléchargez le **fichier Python** ci-dessus.
