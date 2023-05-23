@@ -4,8 +4,8 @@
 from time import sleep
 
 # ===> ZONE À MODIFIER <===
-MODE_SLEEP = False  # Mode "pas à pas" (True = activé, False = désactivé)
 TABLEAU = [9, 7, 5, 3, 1]  # Tableau sur lequel effectuer le tri par insertion
+MODE_SLEEP = False  # Mode "pas à pas" (True = activé, False = désactivé)
 # =========================
 
 def tri_insertion(tableau: 'list[int]', pas_a_pas: bool) -> None:
@@ -80,6 +80,8 @@ def tri_insertion(tableau: 'list[int]', pas_a_pas: bool) -> None:
         
         if pas_a_pas: input('\nAppuyez sur ENTRER pour continuer...\n')
         else: print('\n')
+    
+    print(f'=> {cmp} comparaisons au total <=\n')
 
 if __name__ == '__main__':
     ''' Instructions exécutées si l'on exécute ce fichier directement '''

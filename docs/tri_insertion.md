@@ -267,7 +267,55 @@ Maintenant que l'on a déterminé l'**algorithme** du **tri par insertion**, on 
 Comme pour le tri par sélection, on analysera le **coût algorithmique** du **tri par insertion** en comptant le **nombre de comparaisons** effectuées entre deux éléments du tableau.
 
 !!! success "<span id="fichiers_python">Fichier Python</span>"
-    - [tri_insertion_comp.py](src/tri_insertion_comp.py{ target="_blank" } : programme **Python** permettant de visualiser les comparaisons effectuées.
+    - [tri_insertion_comp.py](src/tri_insertion_comp.py){ target="_blank" } : programme **Python** permettant de visualiser le déroulement du tri et le nombre de comparaisons effectuées.
+
+    Vous n'avez pas besoin de modifier ce fichier en dehors du contenu des deux **variables globales** :
+
+    - `TABLEAU` : Tableau donné en **entrée** à la fonction effectuant le **tri par insertion**.
+    - `MODE_SLEEP` : Permet d'activer le mode "pas à pas". En activant ce mode, vous devrez appuyer sur la touche "Entrer" lorsque demandé afin de passer à l'étape suivante. Affectez la variable à `True` activer ce mode, ou à `False` sinon.
 
 !!! note "Exercice 1"
     Téléchargez le **fichier Python** ci-dessus.
+
+    1. Exécutez ce programme avec un **tableau** de **5 éléments triés dans l'ordre décroissant**. Combien y a t-il de comparaisons :
+        - à la **première** itération ($i = 1$) ?
+        - à la **deuxième** itération ($i = 2$) ?
+        - à la **troisième** itération ($i = 3$) ?
+        - à la **quatrième** itération ($i = 4$) ?
+        - au **total** ?
+    2. Faites la même chose que précédemment avec un **tableau** de **5 éléments triés dans l'ordre croissant**.
+    3. Selon vous, quel est le **meilleur des cas** et le **pire des cas** concernant le tableau donné en entrée de la fonction de **tri par insertion** ?
+
+!!! tip "Rappel sur les complexités"
+    Voici un rappel sur les différentes complexités :
+    
+    - Logarithmique $Θ(log~n)$ : la complexité évolue **moins vite** que le nombre **n** de données (par exemple : si on multiplie le nombre de données **n** par **2**, on ne rajoute qu'**une seule** opération).
+    - Linéaire $Θ(n)$ : la complexité évolue **comme** le nombre **n** de données (par exemple : si on multiplie le nombre de données **n** par **2**, le temps d'exécution est multiplié par **2**).
+    - Quasi-linéaire $O(n~log~n)$ : Intermédiaire entre linéaire et quadratique. En pratique, un algorithme de complexité quasi-linéaire a un comportement très proche d’un algorithme de complexité linéaire.
+    - Quadratique $Θ(n^2)$ : la complexité évolue **comme le carré** du nombre **n** de données (par exemple : si on multiplie le nombres de données **n** par **2**, le temps d'exécution est multiplié par **4**).
+    - Exponentielle $Θ(2^n)$ : la complexité évolue à terme **beaucoup plus vite** que n'importe quelle fonction polynomiale du nombre **n** de données (par exemple : si on multiplie le nombre de données **n** par **100**, le temps d'exécution est multiplié par $2^{100}$, soit **1267650600228229401496703205376**).
+
+    <figure markdown>
+    <center>
+    ![Graphe des complexités algorithmiques](images/graphique_complexites.png)
+    <figcaption>Courbes d'évolution des différentes complexités algorithmiques.<br />(généré avec [ce programme](src/graphique_complexites.py){ target="_blank" })</figcaption>
+    </center>
+    </figure>
+
+!!! note "Exercice 2"
+    Exécutez le programme avec des **tableaux triés dans l'ordre croissant** de différentes **longueurs**. Pour une longueur $n$ donnée, quel sera le nombre $C(n)$ de **comparaisons** obtenu dans le cas où le **tableau** est **trié dans l'ordre croissant** ?
+
+    En déduire le **coût du tri par insertion** dans le **meilleur des cas** (logarithmique ? linéaire ? quasi-linéaire ? quadratique ? exponentiel ?).
+
+!!! note "Exercice 3"
+    Exécutez le programme avec des **tableaux triés dans l'ordre décroissant** :
+
+    - de longueur $5$,
+    - de longueur $6$,
+    - de longueur $7$.
+
+    On notera le nombre de comparaisons sous la forme $C(n) = C_i(1) + C_i(2) + [...] + C_i(n-2) + C_i(n - 1)$ avec $n$ la **longueur du tableau** et $C_i(i)$ le **nombre de comparaisons** effectuées à l'**itération** $i$.
+    
+    Pour une longueur $n$ donnée, quel sera donc le nombre $C(n)$ de **comparaisons** obtenu dans le cas où le **tableau** est **trié dans l'ordre décroissant** ?
+
+    En déduire le **coût du tri par insertion** dans le **meilleur des cas** (logarithmique ? linéaire ? quasi-linéaire ? quadratique ? exponentiel ?).
