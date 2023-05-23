@@ -329,6 +329,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#cout-de-lalgorithme" class="md-nav__link">
+    Coût de l'algorithme
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -493,6 +500,13 @@
         <li class="md-nav__item">
   <a href="#implementation-en-python" class="md-nav__link">
     Implémentation en Python
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cout-de-lalgorithme" class="md-nav__link">
+    Coût de l'algorithme
   </a>
   
 </li>
@@ -743,6 +757,69 @@ Indiquez quel est l'<strong>état du tableau</strong> après chaque <strong>inse
 <div class="admonition note">
 <p class="admonition-title">Exercice 2</p>
 <p><strong>Écrivez</strong> la fonction <code>tri_insertion_decroissant</code> permettant de <strong>trier un tableau dans l'ordre décroissant</strong>. Que faut-il changer par rapport à la fonction <code>tri_insertion</code> ?</p>
+</div>
+<h2 id="cout-de-lalgorithme">Coût de l'algorithme</h2>
+<p>Comme pour le tri par sélection, on analysera le <strong>coût algorithmique</strong> du <strong>tri par insertion</strong> en comptant le <strong>nombre de comparaisons</strong> effectuées entre deux éléments du tableau.</p>
+<div class="admonition success">
+<p class="admonition-title"><span id="fichiers_python">Fichier Python</span></p>
+<ul>
+<li><a href="../src/tri_insertion_comp.py" target="_blank">tri_insertion_comp.py</a> : programme <strong>Python</strong> permettant de visualiser le déroulement du tri et le nombre de comparaisons effectuées.</li>
+</ul>
+<p>Vous n'avez pas besoin de modifier ce fichier en dehors du contenu des deux <strong>variables globales</strong> :</p>
+<ul>
+<li><code>TABLEAU</code> : Tableau donné en <strong>entrée</strong> à la fonction effectuant le <strong>tri par insertion</strong>.</li>
+<li><code>MODE_SLEEP</code> : Permet d'activer le mode "pas à pas". En activant ce mode, vous devrez appuyer sur la touche "Entrer" lorsque demandé afin de passer à l'étape suivante. Affectez la variable à <code>True</code> activer ce mode, ou à <code>False</code> sinon.</li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Exercice 1</p>
+<p>Téléchargez le <strong>fichier Python</strong> ci-dessus.</p>
+<ol>
+<li>Exécutez ce programme avec un <strong>tableau</strong> de <strong>5 éléments triés dans l'ordre décroissant</strong>. Combien y a t-il de comparaisons :<ul>
+<li>à la <strong>première</strong> itération (<span class="arithmatex">\(i = 1\)</span>) ?</li>
+<li>à la <strong>deuxième</strong> itération (<span class="arithmatex">\(i = 2\)</span>) ?</li>
+<li>à la <strong>troisième</strong> itération (<span class="arithmatex">\(i = 3\)</span>) ?</li>
+<li>à la <strong>quatrième</strong> itération (<span class="arithmatex">\(i = 4\)</span>) ?</li>
+<li>au <strong>total</strong> ?</li>
+</ul>
+</li>
+<li>Faites la même chose que précédemment avec un <strong>tableau</strong> de <strong>5 éléments triés dans l'ordre croissant</strong>.</li>
+<li>Selon vous, quel est le <strong>meilleur des cas</strong> et le <strong>pire des cas</strong> concernant le tableau donné en entrée de la fonction de <strong>tri par insertion</strong> ?</li>
+</ol>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Rappel sur les complexités</p>
+<p>Voici un rappel sur les différentes complexités :</p>
+<ul>
+<li>Logarithmique <span class="arithmatex">\(Θ(log~n)\)</span> : la complexité évolue <strong>moins vite</strong> que le nombre <strong>n</strong> de données (par exemple : si on multiplie le nombre de données <strong>n</strong> par <strong>2</strong>, on ne rajoute qu'<strong>une seule</strong> opération).</li>
+<li>Linéaire <span class="arithmatex">\(Θ(n)\)</span> : la complexité évolue <strong>comme</strong> le nombre <strong>n</strong> de données (par exemple : si on multiplie le nombre de données <strong>n</strong> par <strong>2</strong>, le temps d'exécution est multiplié par <strong>2</strong>).</li>
+<li>Quasi-linéaire <span class="arithmatex">\(O(n~log~n)\)</span> : Intermédiaire entre linéaire et quadratique. En pratique, un algorithme de complexité quasi-linéaire a un comportement très proche d’un algorithme de complexité linéaire.</li>
+<li>Quadratique <span class="arithmatex">\(Θ(n^2)\)</span> : la complexité évolue <strong>comme le carré</strong> du nombre <strong>n</strong> de données (par exemple : si on multiplie le nombres de données <strong>n</strong> par <strong>2</strong>, le temps d'exécution est multiplié par <strong>4</strong>).</li>
+<li>Exponentielle <span class="arithmatex">\(Θ(2^n)\)</span> : la complexité évolue à terme <strong>beaucoup plus vite</strong> que n'importe quelle fonction polynomiale du nombre <strong>n</strong> de données (par exemple : si on multiplie le nombre de données <strong>n</strong> par <strong>100</strong>, le temps d'exécution est multiplié par <span class="arithmatex">\(2^{100}\)</span>, soit <strong>1267650600228229401496703205376</strong>).</li>
+</ul>
+<p><figure markdown>
+<center>
+<img alt="Graphe des complexités algorithmiques" src="../images/graphique_complexites.png" />
+<figcaption>Courbes d'évolution des différentes complexités algorithmiques.<br />(généré avec <a href="../src/graphique_complexites.py" target="_blank">ce programme</a>)</figcaption>
+</center>
+</figure></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Exercice 2</p>
+<p>Exécutez le programme avec des <strong>tableaux triés dans l'ordre croissant</strong> de différentes <strong>longueurs</strong>. Pour une longueur <span class="arithmatex">\(n\)</span> donnée, quel sera le nombre <span class="arithmatex">\(C(n)\)</span> de <strong>comparaisons</strong> obtenu dans le cas où le <strong>tableau</strong> est <strong>trié dans l'ordre croissant</strong> ?</p>
+<p>En déduire le <strong>coût du tri par insertion</strong> dans le <strong>meilleur des cas</strong> (logarithmique ? linéaire ? quasi-linéaire ? quadratique ? exponentiel ?).</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Exercice 3</p>
+<p>Exécutez le programme avec des <strong>tableaux triés dans l'ordre décroissant</strong> :</p>
+<ul>
+<li>de longueur <span class="arithmatex">\(5\)</span>,</li>
+<li>de longueur <span class="arithmatex">\(6\)</span>,</li>
+<li>de longueur <span class="arithmatex">\(7\)</span>.</li>
+</ul>
+<p>On notera le nombre de comparaisons sous la forme <span class="arithmatex">\(C(n) = C_i(1) + C_i(2) + [...] + C_i(n-2) + C_i(n - 1)\)</span> avec <span class="arithmatex">\(n\)</span> la <strong>longueur du tableau</strong> et <span class="arithmatex">\(C_i(i)\)</span> le <strong>nombre de comparaisons</strong> effectuées à l'<strong>itération</strong> <span class="arithmatex">\(i\)</span>.</p>
+<p>Pour une longueur <span class="arithmatex">\(n\)</span> donnée, quel sera donc le nombre <span class="arithmatex">\(C(n)\)</span> de <strong>comparaisons</strong> obtenu dans le cas où le <strong>tableau</strong> est <strong>trié dans l'ordre décroissant</strong> ?</p>
+<p>En déduire le <strong>coût du tri par insertion</strong> dans le <strong>meilleur des cas</strong> (logarithmique ? linéaire ? quasi-linéaire ? quadratique ? exponentiel ?).</p>
 </div>
 
 
