@@ -412,6 +412,30 @@ On rappelle l'algorithme du **tri par insertion** :
 !!! note "Exercice 2"
     Enfin, montrer la terminaison de la boucle **POUR** principale de l'algorithme.
 
+??? tip "Réponse 2"
+    On transforme d'abord la boucle **POUR** en boucle **TANT QUE**.
+
+    &emsp;&emsp;i ← 1  
+    &emsp;&emsp;**TANT QUE** i < longueur(tableau)  
+    &emsp;&emsp;&emsp;&emsp;(instructions ne modifiant pas la valeur de i...)  
+    &emsp;&emsp;&emsp;&emsp;i ← i + 1
+
+    On peut écrire la variable de boucle sous la forme d'une **suite arithmétique** :  
+    $i_n = i_0 + rn$ avec le terme initial (avant d'entrer dans la boucle) $i_0 = 1$ et la raison $r = 1$ (car on incrémente de 1 à chaque itération de la boucle), $n$ étant le nombre de tours de boucle effectué.
+
+    Donc $i_n = 1 + n$
+
+    On peut donc écrire :  
+    &emsp;&emsp;**TANT QUE** $i_n$ < longueur(tableau)  
+    &emsp;&emsp;**TANT QUE** $1 + n$ < longueur(tableau)  
+    &emsp;&emsp;**TANT QUE** 0 < longueur(tableau) $- (1 + n)$  
+    &emsp;&emsp;**TANT QUE** 0 < longueur(tableau) $- 1 - n$  
+    &emsp;&emsp;**TANT QUE** longueur(tableau) $- 1 - n$ > 0
+
+    On obtient donc une nouvelle suite arithmétique **strictement décroissante** : $v_n = v_0 + rn$ avec $v_0 = longueur(tableau) - 1$ et $r = -1$.
+
+    $v_n$ est donc bien un **variant** de la boucle, et on a prouvé la **terminaison**.
+
 ### Correction du tri par insertion
 
 Dans les deux parties précédentes, nous avons montré :
