@@ -334,6 +334,26 @@
     Coût de l'algorithme
   </a>
   
+    <nav class="md-nav" aria-label="Coût de l'algorithme">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#terminaison-du-tri-par-insertion" class="md-nav__link">
+    Terminaison du tri par insertion
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correction-du-tri-par-insertion" class="md-nav__link">
+    Correction du tri par insertion
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -509,6 +529,26 @@
     Coût de l'algorithme
   </a>
   
+    <nav class="md-nav" aria-label="Coût de l'algorithme">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#terminaison-du-tri-par-insertion" class="md-nav__link">
+    Terminaison du tri par insertion
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correction-du-tri-par-insertion" class="md-nav__link">
+    Correction du tri par insertion
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -679,13 +719,13 @@ Indiquez quel est l'<strong>état du tableau</strong> après chaque <strong>inse
 <strong>SORTIE</strong> : aucune (tri en place)</p>
 <p><strong>DÉBUT</strong><br />
 &emsp;&emsp;<strong>POUR</strong> i <strong>ALLANT DE</strong> 1 <strong>À</strong> longueur(tableau) - 1<br />
-&emsp;&emsp;&emsp;&emsp;valeur_courante ← tableau[i]<br />
+&emsp;&emsp;&emsp;&emsp;cle ← tableau[i]<br />
 &emsp;&emsp;&emsp;&emsp;j ← i <span class="arithmatex">\(-\)</span> 1<br />
-&emsp;&emsp;&emsp;&emsp;<strong>TANT QUE</strong> j ≥ 0 <strong>ET QUE</strong> tableau[j] &gt; valeur_courante<br />
+&emsp;&emsp;&emsp;&emsp;<strong>TANT QUE</strong> j ≥ 0 <strong>ET QUE</strong> tableau[j] &gt; cle<br />
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;tableau[j + 1] ← tableau[j]<br />
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;j ← j <span class="arithmatex">\(-\)</span> 1<br />
 &emsp;&emsp;&emsp;&emsp;<strong>FIN TANT QUE</strong><br />
-&emsp;&emsp;&emsp;&emsp;tableau[j + 1] ← valeur_courante<br />
+&emsp;&emsp;&emsp;&emsp;tableau[j + 1] ← cle<br />
 &emsp;&emsp;<strong>FIN POUR</strong><br />
 &emsp;&emsp;Renvoyer <strong>∅</strong><br />
 <strong>FIN ALGORITHME</strong>
@@ -700,10 +740,10 @@ Indiquez quel est l'<strong>état du tableau</strong> après chaque <strong>inse
 <ol>
 <li>Pourquoi commence t-on la boucle <strong>POUR</strong> à partir de <strong>1</strong> ?</li>
 <li><strong>Expliquez</strong> à quoi sert la 3<sup>ème</sup> <strong>ligne</strong> de l'<strong>algorithme</strong> : <code>j ← i - 1</code>.</li>
-<li>Dans le <strong>TANT QUE</strong>, à quoi sert la première condition <code>j ≥ 0</code> ? La deuxième condition <code>tableau[j] &gt; valeur_courante</code> ? Pourrait t-on inverser les deux conditions ?</li>
+<li>Dans le <strong>TANT QUE</strong>, à quoi sert la première condition <code>j ≥ 0</code> ? La deuxième condition <code>tableau[j] &gt; cle</code> ? Pourrait t-on inverser les deux conditions ?</li>
 <li>À quoi sert la ligne <code>tableau[j + 1] ← tableau[j]</code> dans le <strong>TANT QUE</strong> ?</li>
 <li>Pourquoi <strong>décrémente t-on</strong> (c'est-à-dire que l'on diminue de 1) la valeur de <code>j</code> à chaque tour de la boucle <strong>TANT QUE</strong> ?</li>
-<li>Expliquez l'<strong>affectation</strong> <code>tableau[j + 1] ← valeur_courante</code> après la boucle <strong>TANT QUE</strong>.</li>
+<li>Expliquez l'<strong>affectation</strong> <code>tableau[j + 1] ← cle</code> après la boucle <strong>TANT QUE</strong>.</li>
 </ol>
 </div>
 <div class="admonition info">
@@ -821,6 +861,261 @@ Indiquez quel est l'<strong>état du tableau</strong> après chaque <strong>inse
 <p>Pour une longueur <span class="arithmatex">\(n\)</span> donnée, quel sera donc le nombre <span class="arithmatex">\(C(n)\)</span> de <strong>comparaisons</strong> obtenu dans le cas où le <strong>tableau</strong> est <strong>trié dans l'ordre décroissant</strong> ?</p>
 <p>En déduire le <strong>coût du tri par insertion</strong> dans le <strong>meilleur des cas</strong> (logarithmique ? linéaire ? quasi-linéaire ? quadratique ? exponentiel ?).</p>
 </div>
+<h3 id="terminaison-du-tri-par-insertion">Terminaison du tri par insertion</h3>
+<p>Pour démontrer la <strong>terminaison</strong> de notre algorithme, il faut exhiber un <strong>variant de boucle</strong> pour <strong>chacune des boucles</strong> de l'algorithme.</p>
+<div class="admonition success">
+<p class="admonition-title">Variant de boucle</p>
+<p>On appelle <strong>variant de boucle</strong> toute <strong>quantité</strong> <span class="arithmatex">\(v\)</span> (qui peut être déterminée en fonction des différentes <strong>variables</strong> du programme) telle que :</p>
+<ul>
+<li><span class="arithmatex">\(v\)</span> ne prend que des valeurs <strong>entières</strong>,</li>
+<li><span class="arithmatex">\(v\)</span> est initialement <strong>positive</strong>,</li>
+<li><span class="arithmatex">\(v\)</span> <strong>décroit strictement</strong> à chaque passage dans la boucle.</li>
+</ul>
+<p>On exhibe un <strong>variant de boucle</strong> pour démontrer qu'une boucle <strong>se termine</strong>, en un temps fini. <br />
+S'il existe plusieurs boucles dans un programme, il faut trouver autant de variants qu'il y en a.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Prouver la terminaison</p>
+<p>Concrètement, on peut prouver la <strong>terminaison</strong> d'un algorithme en montrant que les deux propositions suivantes sont <strong>vraies</strong> :</p>
+<ul>
+<li>Proposition A : les <strong>boucles</strong> peuvent s'exprimer sous la forme <strong>TANT QUE</strong> <span style="color:#23ab32">VARIANT</span> <strong>&gt; 0</strong></li>
+<li>Proposition B : le <span style="color:#23ab32">VARIANT</span> est une <strong>suite d'entiers strictement décroissante</strong>.</li>
+</ul>
+<p>Si les deux propositions <strong>A</strong> et <strong>B</strong> sont vraies (<span class="arithmatex">\(A \land B\)</span>), l'algorithme s'arrêtera <strong>toujours</strong>. Autrement (au moins l'une des deux propositions n'est pas vérifiée, <span class="arithmatex">\(\neg(A \land B)\)</span>), il existe au moins un cas où l'algorithme ne se terminera pas.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Exemple</p>
+<p>Démontrons que la boucle <strong>POUR</strong> suivante se termine :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>POUR i ALLANT DE 10 à 49 AVEC UN PAS DE 5:
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    Instructions ne modifiant pas la valeur de i...
+</code></pre></div>
+<p>On peut ré-écrire cette boucle <strong>POUR</strong> avec une boucle <strong>TANT QUE</strong> :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>i = 10
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>TANT QUE i &lt; 50:
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    Instructions ne modifiant pas la valeur de i...
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    i = i + 5
+</code></pre></div>
+<p>Si on note <span class="arithmatex">\(n\)</span> le <strong>nombre de tours de boucle</strong> effectué, on peut représenter les valeurs successives que va prendre <span class="arithmatex">\(i\)</span> sous la forme d'une suite arithmétique :<br />
+<span class="arithmatex">\(i_n = i_0 + r*n\)</span>, avec <span class="arithmatex">\(i_0\)</span> la <strong>valeur initiale</strong> de <span class="arithmatex">\(i_n\)</span> et <span class="arithmatex">\(r\)</span> la <strong>raison</strong> de la suite.</p>
+<p>Ici, <span class="arithmatex">\(i_0 = 10\)</span> et <span class="arithmatex">\(r = 5\)</span>.<br />
+Donc <span class="arithmatex">\(i_n = 10 + 5n\)</span>.</p>
+<p>On peut donc ré-écrire la condition <strong>TANT QUE</strong> de la manière suivante :</p>
+<p>TANT QUE <span class="arithmatex">\(i_n &lt; 50\)</span><br />
+TANT QUE <span class="arithmatex">\(10 + 5n &lt; 50\)</span><br />
+TANT QUE <span class="arithmatex">\(0 &lt; 50 - 10 - 5n\)</span><br />
+TANT QUE <span class="arithmatex">\(50 - 10 - 5n &gt; 0\)</span><br />
+TANT QUE <span class="arithmatex">\(40 - 5n &gt; 0\)</span></p>
+<p>On obtient donc notre <strong>variant</strong> <span class="arithmatex">\(v_n\)</span> qui prend la forme d'une nouvelle <strong>suite arithmétique</strong> :<br />
+<span class="arithmatex">\(v_n = v_0 - r*n\)</span> avec <span class="arithmatex">\(v_0 = 40\)</span> pour <strong>valeur initiale</strong> et <span class="arithmatex">\(r = -5\)</span> pour <strong>raison</strong> de la suite.<br />
+Donc :<br />
+<span class="arithmatex">\(v_n = 40 - 5n\)</span> est un <strong>variant de la boucle</strong> car il s'agit d'une suite <strong>d'entiers</strong>, <strong>initialement positive</strong> et qui <strong>décroit strictement</strong> à chaque tour de boucle (car la <strong>raison</strong> est <strong>négative</strong>).</p>
+<p>On a trouvé un <strong>variant</strong>, et donc <strong>démontré la terminaison de notre boucle</strong>.</p>
+</div>
+<p>On rappelle l'algorithme du <strong>tri par insertion</strong> :</p>
+<div class="admonition abstract">
+<p class="admonition-title">Algorithme du tri par insertion</p>
+<p><div style="font-size:1.1em">
+<strong>ALGORITHME</strong> : tri_insertion<br />
+<strong>ENTRÉE</strong> :<br />
+&emsp;&emsp;<code>tableau</code> : un <strong>tableau</strong> d'éléments<br />
+<strong>SORTIE</strong> : aucune (tri en place)</p>
+<p><strong>DÉBUT</strong><br />
+&emsp;&emsp;<strong>POUR</strong> i <strong>ALLANT DE</strong> 1 <strong>À</strong> longueur(tableau) - 1<br />
+&emsp;&emsp;&emsp;&emsp;cle ← tableau[i]<br />
+&emsp;&emsp;&emsp;&emsp;j ← i <span class="arithmatex">\(-\)</span> 1<br />
+&emsp;&emsp;&emsp;&emsp;<strong>TANT QUE</strong> j ≥ 0 <strong>ET QUE</strong> tableau[j] &gt; cle<br />
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;tableau[j + 1] ← tableau[j]<br />
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;j ← j <span class="arithmatex">\(-\)</span> 1<br />
+&emsp;&emsp;&emsp;&emsp;<strong>FIN TANT QUE</strong><br />
+&emsp;&emsp;&emsp;&emsp;tableau[j + 1] ← cle<br />
+&emsp;&emsp;<strong>FIN POUR</strong><br />
+&emsp;&emsp;Renvoyer <strong>∅</strong><br />
+<strong>FIN ALGORITHME</strong>
+</div></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Exercice 1</p>
+<p>Montrer la terminaison de la boucle <strong>TANT QUE</strong>. Il y a deux conditions qui doivent être vérifiées pour pouvoir rentrer dans la boucle. Si une seule des deux conditions (<span class="arithmatex">\(j ≥ 0\)</span> ou <span class="arithmatex">\(tableau[j] &gt; cle\)</span>) n'est plus vérifiée, alors la boucle s'arrête.</p>
+<p>On ne tiendra compte ici que de la <strong>première condition</strong> : <code>TANT QUE j ≥ 0</code>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Exercice 2</p>
+<p>Enfin, montrer la terminaison de la boucle <strong>POUR</strong> principale de l'algorithme.</p>
+</div>
+<details class="tip">
+<summary>Réponse 2</summary>
+<p>On transforme d'abord la boucle <strong>POUR</strong> en boucle <strong>TANT QUE</strong>.</p>
+<p>&emsp;&emsp;i ← 1<br />
+&emsp;&emsp;<strong>TANT QUE</strong> i &lt; longueur(tableau)<br />
+&emsp;&emsp;&emsp;&emsp;(instructions ne modifiant pas la valeur de i...)<br />
+&emsp;&emsp;&emsp;&emsp;i ← i + 1</p>
+<p>On peut écrire la variable de boucle sous la forme d'une <strong>suite arithmétique</strong> :<br />
+<span class="arithmatex">\(i_n = i_0 + rn\)</span> avec le terme initial (avant d'entrer dans la boucle) <span class="arithmatex">\(i_0 = 1\)</span> et la raison <span class="arithmatex">\(r = 1\)</span> (car on incrémente de 1 à chaque itération de la boucle), <span class="arithmatex">\(n\)</span> étant le nombre de tours de boucle effectué.</p>
+<p>Donc <span class="arithmatex">\(i_n = 1 + n\)</span></p>
+<p>On peut donc écrire :<br />
+&emsp;&emsp;<strong>TANT QUE</strong> <span class="arithmatex">\(i_n\)</span> &lt; longueur(tableau)<br />
+&emsp;&emsp;<strong>TANT QUE</strong> <span class="arithmatex">\(1 + n\)</span> &lt; longueur(tableau)<br />
+&emsp;&emsp;<strong>TANT QUE</strong> 0 &lt; longueur(tableau) <span class="arithmatex">\(- (1 + n)\)</span><br />
+&emsp;&emsp;<strong>TANT QUE</strong> 0 &lt; longueur(tableau) <span class="arithmatex">\(- 1 - n\)</span><br />
+&emsp;&emsp;<strong>TANT QUE</strong> longueur(tableau) <span class="arithmatex">\(- 1 - n\)</span> &gt; 0</p>
+<p>On obtient donc une nouvelle suite arithmétique <strong>strictement décroissante</strong> : <span class="arithmatex">\(v_n = v_0 + rn\)</span> avec <span class="arithmatex">\(v_0 = longueur(tableau) - 1\)</span> et <span class="arithmatex">\(r = -1\)</span>.</p>
+<p><span class="arithmatex">\(v_n\)</span> est donc bien un <strong>variant</strong> de la boucle, et on a prouvé la <strong>terminaison</strong>.</p>
+</details>
+<h3 id="correction-du-tri-par-insertion">Correction du tri par insertion</h3>
+<p>Dans les deux parties précédentes, nous avons montré :</p>
+<ul>
+<li>Le <strong>coût algorithmique</strong> de l'algorithme du tri par insertion, qui est <strong>quadratique</strong> dans le <strong>pire des cas</strong>, c'est-à-dire en <span class="arithmatex">\(O(n^2)\)</span>, et qui est <strong>linéaire</strong> dans le <strong>meilleur des cas</strong>, c'est-à-dire en <span class="arithmatex">\(O(n)\)</span>.</li>
+<li>La <strong>terminaison</strong> de l'algorithme. On sait que l'algorithme finira toujours par se terminer.</li>
+</ul>
+<p>Il reste toutefois à démontrer que l'algorithme <strong>renvoie toujours un résultat correct</strong>.</p>
+<p>On rappelle que la <strong>preuve de correction</strong> d'un algorithme permet d'affirmer :</p>
+<ul>
+<li>qu'il <strong>fournit toujours la bonne réponse</strong></li>
+<li>sur <strong>toutes les entrées valides</strong> qu'on lui donne (les entrées qui respectent les <strong>préconditions</strong>).</li>
+</ul>
+<p>Pour démontrer la correction du <strong>tri par insertion</strong>, il faut déterminer un <strong>invariant de boucle</strong> pour la <strong>boucle principale</strong> de notre algorithme.</p>
+<div class="admonition tip">
+<p class="admonition-title">Invariant de boucle</p>
+<p>On appelle <strong>invariant de boucle</strong> une <strong>propriété</strong> <span class="arithmatex">\(P\)</span> qui est <strong>vraie avant et après chaque itération</strong> de la boucle.</p>
+</div>
+<p>On rappelle que l'on <strong>démontre</strong> un <strong>invariant</strong> en utilisant un <strong>raisonnement par récurrence</strong>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Démonstration de l'invariant par récurrence</p>
+<p>Pour montrer à l'aide d'une <strong>récurrence simple</strong> qu'une proposition <span class="arithmatex">\(P(k)\)</span> est vérifiée pour tout entier <span class="arithmatex">\(k \ge 0\)</span>, avec <span class="arithmatex">\(k\)</span> le nombre d'itérations de la boucle effectuées :</p>
+<ul>
+<li><strong>Initialisation</strong> : on vérifie que la proposition est <strong>vraie</strong> au <strong>rang initial</strong> <span class="arithmatex">\(0\)</span>, c'est-à-dire <strong>avant le premier passage</strong> dans la <strong>boucle</strong>.</li>
+<li><strong>Conservation</strong> : on suppose que la proposition est <strong>vraie à un certain rang</strong> <span class="arithmatex">\(k \ge 0\)</span> fixé, c'est-à-dire <strong>après</strong> <span class="arithmatex">\(k\)</span> <strong>tours de boucle</strong>, et on en déduit qu'elle est <strong>vraie</strong> au <strong>rang suivant</strong> <span class="arithmatex">\(k + 1\)</span>, c'est-à-dire après <strong>un tour de boucle en plus</strong>. On peut écrire <span class="arithmatex">\(P_k \implies P_{k+1}\)</span>.</li>
+<li><strong>Terminaison</strong> : on exploite les deux phases précédentes et on montre que la proposition est <strong>vraie</strong> sur <strong>toutes les données</strong> une fois la <strong>dernière itération</strong> de la <strong>boucle</strong> effectuée.</li>
+</ul>
+</div>
+<hr />
+<p>Dans la cas du tri par insertion, on peut décomposer le problème en :</p>
+<ul>
+<li>un <strong>sous-tableau trié</strong> à gauche, initialement composé du <strong>premier élément</strong>,</li>
+<li>un <strong>sous-tableau non-trié</strong> à droite.</li>
+</ul>
+<div class="admonition success">
+<p class="admonition-title">Une proposition d'invariant</p>
+<p>On propose l'invariant <span class="arithmatex">\(P_k\)</span> suivant : « Après <span class="arithmatex">\(k\)</span> tours de boucle, <span class="arithmatex">\(k+1\)</span> éléments sont triés dans le sous-tableau <span class="arithmatex">\([0;k]\)</span> de gauche. »</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Algorithme du tri par insertion</p>
+<p><div style="font-size:1.1em">
+<strong>ALGORITHME</strong> : tri_insertion<br />
+<strong>ENTRÉE</strong> :<br />
+&emsp;&emsp;<code>tableau</code> : un <strong>tableau</strong> d'éléments<br />
+<strong>SORTIE</strong> : aucune (tri en place)</p>
+<p><strong>DÉBUT</strong><br />
+&emsp;&emsp;<strong>POUR</strong> i <strong>ALLANT DE</strong> 1 <strong>À</strong> longueur(tableau) - 1<br />
+&emsp;&emsp;&emsp;&emsp;cle ← tableau[i]<br />
+&emsp;&emsp;&emsp;&emsp;j ← i <span class="arithmatex">\(-\)</span> 1<br />
+&emsp;&emsp;&emsp;&emsp;<strong>TANT QUE</strong> j ≥ 0 <strong>ET QUE</strong> tableau[j] &gt; cle<br />
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;tableau[j + 1] ← tableau[j]<br />
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;j ← j <span class="arithmatex">\(-\)</span> 1<br />
+&emsp;&emsp;&emsp;&emsp;<strong>FIN TANT QUE</strong><br />
+&emsp;&emsp;&emsp;&emsp;tableau[j + 1] ← cle<br />
+&emsp;&emsp;<strong>FIN POUR</strong><br />
+&emsp;&emsp;Renvoyer <strong>∅</strong><br />
+<strong>FIN ALGORITHME</strong>
+</div></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Exercice 1 : Initialisation</p>
+<p>Commençons par l'<strong>initialisation</strong>.
+Avant de rentrer dans la boucle (<span class="arithmatex">\(k=0\)</span>), l'<strong>invariant</strong> <span class="arithmatex">\(P_k\)</span> est-il vérifié ?</p>
+</div>
+<details class="tip">
+<summary>Réponse 1</summary>
+<p>Avant de rentrer dans la boucle (k=0), notre sous-tableau trié ne contient que la première valeur.
+Or, un sous-tableau ne contenant qu'<strong>un élément</strong> est <strong>trié</strong>.</p>
+<p><span class="arithmatex">\(P_k\)</span> correspond à cette proposition :</p>
+<p>« Après <span class="arithmatex">\(k\)</span> tours de boucle, <span class="arithmatex">\(k+1\)</span> éléments sont triés dans le sous-tableau <span class="arithmatex">\([0;k]\)</span> de gauche. »</p>
+<p><span class="arithmatex">\(P_0\)</span> correspond donc à :</p>
+<p>« Après 0 tours de boucle, 1 élément est trié dans le sous-tableau [0;0] de gauche. »</p>
+<p>La propriété <span class="arithmatex">\(P_0\)</span> est vérifiée, on a terminé la phase d'<strong>initialisation</strong>.</p>
+</details>
+<div class="admonition note">
+<p class="admonition-title">Exercice 2</p>
+<p>Quelle va être la valeur :</p>
+<ul>
+<li>de <span class="arithmatex">\(i\)</span> lors du <strong>premier tour de la boucle POUR principale</strong> ?</li>
+<li>de <span class="arithmatex">\(j\)</span> avant de rentrer dans le <strong>TANT QUE</strong> lors du premier tour de la boucle principale ?</li>
+</ul>
+<p>Indiquez quelle est la relation entre <span class="arithmatex">\(k\)</span> et <span class="arithmatex">\(i\)</span>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Exercice 3 : Conservation</p>
+<p>Démontrons maintenant la <strong>conservation</strong>, c'est-à-dire que <span class="arithmatex">\(P_k \implies P_{k+1}\)</span>.<br />
+Pour cela, on suppose d'abord <strong>vraie</strong> la proposition <span class="arithmatex">\(P_k\)</span> : « Après <span class="arithmatex">\(k\)</span> tours de boucle, <span class="arithmatex">\(k+1\)</span> éléments sont triés dans le sous-tableau <span class="arithmatex">\([0;k]\)</span> de gauche. »<br />
+Il faut maintenant démontrer que la proposition <span class="arithmatex">\(P_{k+1}\)</span> est également <strong>vraie</strong>.</p>
+<p>On distinguera pour cela <strong>trois cas</strong> :</p>
+<ul>
+<li>le cas où la <strong>clé</strong> (d'indice <span class="arithmatex">\(k+1\)</span>) est <strong>inférieure</strong> à tous les éléments du sous-tableau trié <span class="arithmatex">\([0;k]\)</span>,</li>
+<li>le cas où la <strong>clé</strong> (d'indice <span class="arithmatex">\(k+1\)</span>) est <strong>supérieure</strong> à tous les éléments du sous-tableau trié <span class="arithmatex">\([0;k]\)</span>,</li>
+<li>le cas où la <strong>clé</strong> (d'indice <span class="arithmatex">\(k+1\)</span>) est <strong>inférieure</strong> à certains éléments du sous-tableau trié <span class="arithmatex">\([0;k]\)</span>, mais pas tous.</li>
+</ul>
+</div>
+<details class="tip">
+<summary>Réponse 3</summary>
+<p>Au début du tour de boucle <span class="arithmatex">\(k+1\)</span> :</p>
+<ul>
+<li>l'indice <span class="arithmatex">\(i\)</span> est égal à <span class="arithmatex">\(k+1\)</span>,</li>
+<li>on dispose d'un sous-tableau <span class="arithmatex">\([0;k]\)</span> trié auquel on va rajouter un nouvel élément, la clé d'indice <span class="arithmatex">\(k+1\)</span>.</li>
+</ul>
+<p><strong>Cas 1 : clé (indice <span class="arithmatex">\(k+1\)</span>) inférieure aux éléments de [0;k]</strong> :</p>
+<ul>
+<li>La boucle <strong>TANT QUE</strong> continue jusqu'à avoir parcouru tous les éléments du sous-tableau trié, car tous les éléments ont une valeur <strong>supérieure</strong> à la <strong>clé</strong>. On <strong>décale</strong> donc tous les éléments du <strong>sous-tableau trié</strong> d'une case vers la <strong>droite</strong>.<br />
+Les éléments de <span class="arithmatex">\([0;k]\)</span> sont à présent dans <span class="arithmatex">\([1;k+1]\)</span>.</li>
+<li>L'ordre des éléments est conservé (on les a seulement décalé).</li>
+<li>Après la dernière itération, <span class="arithmatex">\(j\)</span> vaut donc <span class="arithmatex">\(-1\)</span>, et la <strong>clé</strong> est <strong>replacée</strong> en position.</li>
+</ul>
+<p>La clé est donc maintenant à l'indice <span class="arithmatex">\(0\)</span> et est inférieure à tous les éléments du sous-tableau <span class="arithmatex">\([1;k+1]\)</span>. On peut donc affirmer que le tableau [0;k+1] est maintenant <strong>trié en ordre croissant</strong>.</p>
+<p>Donc <span class="arithmatex">\(P_{k+1}\)</span> est VRAI.</p>
+<p><strong>Cas 2 : clé (indice <span class="arithmatex">\(k+1\)</span>) supérieure (ou égale) aux éléments de <span class="arithmatex">\([0;k]\)</span></strong></p>
+<ul>
+<li>On ne rentre même pas dans le <strong>TANT QUE</strong> puisque l'une de ses conditions n'est pas vérifiée :<br />
+<code>TANT QUE j ≥ 0 et que t[j] &gt; cle</code></li>
+<li>On effectue qu'une seule comparaison entre la <strong>clé</strong> et l'<strong>élément qui le précède</strong>. <span class="arithmatex">\(j\)</span> vaut donc <span class="arithmatex">\(i-1\)</span> après la boucle <strong>TANT QUE</strong>, et on place la clé avec l'instruction <code>t[j+1] ← cle</code>.<br />
+La <strong>clé</strong> reste au même indice <span class="arithmatex">\(i\)</span>.</li>
+<li>Le sous-tableau <span class="arithmatex">\([0, k]\)</span> était déjà trié dans l'ordre croissant, on ne le change pas.</li>
+<li>On rajoute la <strong>clé</strong> (un élément plus grand ou égal à tous les autres) à l'indice <span class="arithmatex">\(k+1\)</span>.</li>
+</ul>
+<p>Finalement, on obtient un sous-tableau <span class="arithmatex">\([0; k+1]\)</span> <strong>trié</strong> après avoir effectué un tour de boucle supplémentaire de la boucle <strong>POUR</strong> principale.</p>
+<p>Donc <span class="arithmatex">\(P_{k+1}\)</span> est VRAI.</p>
+<p><strong>Cas 3 : clé (indice <span class="arithmatex">\(k+1\)</span>) inférieure à certains éléments de <span class="arithmatex">\([0;k]\)</span></strong></p>
+<p>Les éléments du sous-tableau <span class="arithmatex">\([0;k]\)</span> sont <strong>triés</strong>, cela signifie que l'on a d'abord une première partie des éléments inférieurs ou égaux à la clé, puis une deuxième partie des éléments supérieurs à la clé.</p>
+<ul>
+<li>Les éléments d'indice <span class="arithmatex">\([m;k]\)</span> sont <strong>supérieurs</strong> à la clé et vont donc être décalés à droite.</li>
+<li>Les éléments d'indice <span class="arithmatex">\([0;m-1]\)</span> sont <strong>inférieurs</strong> ou égaux à la clé et ne vont donc pas bouger.</li>
+</ul>
+<p>On rappelle les conditions du <strong>TANT QUE</strong> :
+<code>TANT QUE j ≥ 0 et que t[j] &gt; cle</code></p>
+<ul>
+<li>La seconde condition ne sera vraie que jusqu'à t[m] &gt; cle, on déplace donc d'une case à droite les éléments [m; k] qui vont se retrouver en [m+1; k+1]. L'ordre des éléments n'est pas change (puisqu'on les a juste décalé d'un cran vers la droite).</li>
+<li>Le sous-tableau [0;m-1] ne sera quant à lui pas modifié.</li>
+<li>A l'issue de la boucle, <span class="arithmatex">\(j\)</span> contiendra <span class="arithmatex">\(m-1\)</span>. L'instruction permettant de repositionner la <strong>clé</strong> au bon endroit est <code>t[j+1] ← cle</code>.<br />
+Donc la <strong>clé</strong> sera placée à l'indice <span class="arithmatex">\(m - 1 + 1 = m\)</span>.</li>
+<li>Finalement :<ul>
+<li>Le sous-tableau <span class="arithmatex">\([0; m-1]\)</span> est <strong>trié</strong> (pas de changement) et <strong>inférieur ou égal</strong> à la <strong>clé</strong>.</li>
+<li>La <strong>clé</strong> est à l'indice <span class="arithmatex">\(m\)</span>.</li>
+<li>Le sous-tableau <span class="arithmatex">\([m+1;k+1]\)</span> est <strong>trié</strong> et <strong>supérieur</strong> à la <strong>clé</strong>.</li>
+</ul>
+</li>
+</ul>
+<p>Le sous-tableau <span class="arithmatex">\([0; k+1]\)</span> est donc bien trié après avoir effectué un tour de boucle supplémentaire.</p>
+<p>Donc <span class="arithmatex">\(P_{k+1}\)</span> est VRAI.</p>
+</details>
+<p><strong><u>Terminaison</u></strong></p>
+<p>Il ne reste plus qu'à vérifier la <strong>terminaison</strong>, c'est-à-dire si l'<strong>invariant</strong> vérifie <strong>toutes les données</strong> du tableau d'entrée.</p>
+<p>La boucle <strong>POUR</strong> principale va de <strong>1</strong> à <strong>longueur - 1</strong>.<br />
+L'algorithme aura donc, à la fin, fait <strong>longueur - 1</strong> tours de boucle.</p>
+<p>Or l'invariant <span class="arithmatex">\(P_k\)</span> est la propriété selon laquelle, « Après <span class="arithmatex">\(k\)</span> tours de boucle, <span class="arithmatex">\(k+1\)</span> éléments sont triés dans le sous-tableau <span class="arithmatex">\([0;k]\)</span> de gauche. »</p>
+<p>On avait remarqué la relation suivante entre <span class="arithmatex">\(i\)</span> et <span class="arithmatex">\(k\)</span> : <span class="arithmatex">\(k = i\)</span>.</p>
+<p>À la fin de l'algorithme, <span class="arithmatex">\(k\)</span> va donc valoir <span class="arithmatex">\(longueur-1\)</span>.</p>
+<p>Le nombre d'éléments triés correctement est donc <span class="arithmatex">\(k + 1 = longueur-1 + 1 = longueur\)</span> élements triés.</p>
+<p>Après le <strong>dernier tour de boucle</strong>, le <strong>sous-tableau trié</strong> contient donc <strong>longueur</strong> éléments triés, c'est-à-dire <strong>tout le tableau</strong>.</p>
+<p>La <strong>terminaison</strong> est démontrée : l'algorithme agit bien sur toutes les données.</p>
+<p>Finalement, la proposition <span class="arithmatex">\(P_k\)</span> est bien un <strong>invariant</strong> de la boucle principale de l'algorithme du tri par insertion, et permet de prouver sa correction.</p>
 
 
 

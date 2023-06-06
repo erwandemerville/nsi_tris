@@ -17,24 +17,24 @@ def tri_insertion(tableau: 'list[int]') -> None:
     '''
 
     for i in range(1, len(tableau)):
-        valeur_courante = tableau[i]
+        cle = tableau[i]
         j = i - 1
-        while j >= 0 and tableau[j] > valeur_courante:
+        while j >= 0 and tableau[j] > cle:
             tableau[j + 1] = tableau[j]
             j = j - 1
-        tableau[j + 1] = valeur_courante
+        tableau[j + 1] = cle
 
 def tri_insertion_decroissant(tableau: 'list[int]') -> None:
     ''' Effectue le tri par insertion en place des éléments d'un tableau donné dans l'ordre décroissant.
     :param tableau: (list[int]) un tableau d'entiers à trier '''
 
     for i in range(1, len(tableau)):
-        valeur_courante = tableau[i]
+        cle = tableau[i]
         j = i - 1
-        while j >= 0 and tableau[j] < valeur_courante:
+        while j >= 0 and tableau[j] < cle:
             tableau[j + 1] = tableau[j]
             j = j - 1
-        tableau[j + 1] = valeur_courante
+        tableau[j + 1] = cle
 
 def est_trie(tableau: 'list[int]') -> bool:
     ''' Renvoie True si les éléments du tableau sont triés, False sinon.
